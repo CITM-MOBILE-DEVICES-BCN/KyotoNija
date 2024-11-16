@@ -1,18 +1,92 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PopUpManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static PopUpManager instance { get; set; }
+
+    [SerializeField] private GameObject settingsPanelPrefab;
+    [SerializeField] private GameObject pausePanelPrefab;
+
+    private GameObject activeSettingsPanel;
+    private GameObject activePausePanel;
+    
+    public void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowSettingsPanel(Transform parent = null)
     {
-        
+        if (activeSettingsPanel == null)
+        {
+            activeSettingsPanel = Instantiate(settingsPanelPrefab, parent);
+        }
+        else
+        {
+            Debug.LogWarning("Settings panel is already active");
+        }
     }
+
+    public void HideSettingsPanel()
+    {
+        if (activeSettingsPanel != null)
+        {
+            Destroy(activeSettingsPanel);
+            activeSettingsPanel = null;
+        }
+        else
+        {
+            Debug.LogWarning("No active settings panel to hide");
+        }
+    }
+
+    public void ShowPausePanel(Transform parent = null)
+    {
+        if (activePausePanel == null)
+        {
+            activePausePanel = Instantiate(pausePanelPrefab, parent);
+        }
+        else
+        {
+            Debug.LogWarning("Pause panel is already active");
+        }
+    }
+
+    public void HidePausePanel()
+    {
+        if (activePausePanel != null)
+        {
+            Destroy(activePausePanel);
+            activePausePanel = null;
+        }
+        else
+        {
+            Debug.LogWarning("No active pause panel to hide");
+        }
+    }
+
+    public void ToggleSettingsPanel(Transform parent = null)
+    {
+        if (activePausePanel != null)
+        {
+            ShowPausePanel(parent);
+        }
+        else
+        {
+            HidePausePanel();
+        }
+    }
+
+
 }
