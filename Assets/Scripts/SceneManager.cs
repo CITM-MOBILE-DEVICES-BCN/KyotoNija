@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneManager : MonoBehaviour
 {
     private static SceneManager instance { get; set; }
-    public void Awake()
+    public static SceneManager Instance => instance;
+    private void Awake()
     {
         if (instance == null)
         {

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PopUpManager : MonoBehaviour
 {
     private static PopUpManager instance { get; set; }
+    public static PopUpManager Instance => instance;
 
     [SerializeField] private GameObject settingsPanelPrefab;
     [SerializeField] private GameObject pausePanelPrefab;
@@ -13,7 +14,7 @@ public class PopUpManager : MonoBehaviour
     private GameObject activeSettingsPanel;
     private GameObject activePausePanel;
     
-    public void Awake()
+    private void Awake()
     {
         if (instance == null)
         {
