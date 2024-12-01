@@ -21,6 +21,12 @@ public class Enemy : MonoBehaviour
     internal void OnTriggerEnter2D(Collider2D collision)
     {
         print("something has collided with me");
+
+        var player = collision.GetComponent<PlayerMovement>();
+        if (player)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     internal virtual void Attack()
