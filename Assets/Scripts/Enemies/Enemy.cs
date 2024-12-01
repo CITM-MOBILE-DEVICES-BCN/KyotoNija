@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     private Collider2D collider;
     protected Animator animator;
 
+    public PlayerStats player; // Change this so the enemy provider assigns it
+
     public Direction direction;
     void Awake()
     {

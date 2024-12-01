@@ -9,8 +9,6 @@ public class ShootyEnemy : Enemy
     [SerializeField]  private Bullet bulletPrefab;
     [SerializeField] [Range(0.01f, 0.2f)] private float aimSpeed;
 
-    public PlayerStats player; // Change this so the enemy provider assigns it
-
     private float shootTimer = 2.2f;
     private const float SHOOT_TIME = 2.2f;
 
