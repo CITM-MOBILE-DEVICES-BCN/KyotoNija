@@ -57,6 +57,19 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.gravityScale = 0;
         }
+        if (collision.gameObject.CompareTag("IceWall"))
+        {
+            rb.velocity = Vector2.zero;
+            rb.gravityScale = 0.25f;
+        }
+
+        //when player hits the bounce wall it will bounce 
+        if (collision.gameObject.CompareTag("BounceWall"))
+        {
+            var speed = rb.velocity.magnitude;
+            var direction = Vector3.Reflect(rb.velocity.normalized, collision.contacts[0].normal);
+            rb.AddForce(direction * Mathf.Max(speed, 4f),ForceMode2D.Impulse);
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -66,11 +79,19 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.gravityScale = 0;
         }
+        if (collision.gameObject.CompareTag("IceWall"))
+        {
+            rb.gravityScale = 0.25f;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
+        {
+            rb.gravityScale = 1;
+        }
+        if (collision.gameObject.CompareTag("IceWall"))
         {
             rb.gravityScale = 1;
         }
