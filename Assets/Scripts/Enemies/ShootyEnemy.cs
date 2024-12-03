@@ -5,14 +5,14 @@ using UnityEngine.Rendering;
 
 public class ShootyEnemy : Enemy
 {
-    [SerializeField]  private Transform crosshair;
-    [SerializeField]  private Bullet bulletPrefab;
-    [SerializeField] [Range(0.01f, 0.2f)] private float aimSpeed;
+    [SerializeField] protected Transform crosshair;
+    [SerializeField] protected Bullet bulletPrefab;
+    [SerializeField] [Range(0.01f, 0.2f)] protected float aimSpeed;
 
-    private float shootTimer = 2.2f;
-    private const float SHOOT_TIME = 2.2f;
+    protected float shootTimer = 2.2f;
+    protected const float SHOOT_TIME = 2.2f;
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         Vector2 direction = player.transform.position - crosshair.position;
         direction.Normalize();
