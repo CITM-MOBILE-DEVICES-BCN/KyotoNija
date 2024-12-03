@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     int jumps = 2;
     public int jumpsAmount = 2;
     public bool canClingToWall = true;
+    bool isOnWall;
 
     private void Start()
     {
@@ -35,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
             dashTimer = dashTimeLimit;
         }
 
-        if (Input.GetMouseButton(0) && dashTimer > 0 && jumps > 0)
+        if (Input.GetMouseButton(0) && dashTimer > 0 && jumps > 0 && !isOnWall)
         {
             SlowTimeSpeed();
             dashTimer -= Time.unscaledDeltaTime;
@@ -44,7 +45,11 @@ public class PlayerMovement : MonoBehaviour
         if (dashTimer < 0)
         {
             ResumeTimeSpeed();
-            jumps--;
+            if (isOnWall)
+            {
+                jumps--;
+            }
+            dashTimer = dashTimeLimit;
         }
         
         if (Input.GetMouseButtonUp(0) && dashTimer > 0 && jumps > 0)
@@ -69,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         endMousePos = Input.mousePosition;
         endMousePos.z = Camera.main.GetComponent<Transform>().position.z;
         endMousePos = Camera.main.ScreenToWorldPoint(endMousePos);
-        Debug.Log(jumps);
+        Debug.Log(jumps);   
     }
     void ResumeTimeSpeed()
     {
@@ -93,28 +98,18 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.gravityScale = 0;
             jumps = jumpsAmount;
+            isOnWall = true;
         }
         if (collision.gameObject.CompareTag("IceWall") && canClingToWall == true)
         {
             rb.velocity = Vector2.zero;
             rb.gravityScale = 0.25f;
             jumps = jumpsAmount;
+            isOnWall = true;
         }
         if (collision.gameObject.CompareTag("BounceWall") && canClingToWall == true)
         {
             jumps = jumpsAmount;
-        }
-    }
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Wall") && canClingToWall == true)
-        {
-            rb.velocity = Vector2.zero;
-            rb.gravityScale = 0;
-        }
-        if (collision.gameObject.CompareTag("IceWall") && canClingToWall == true)
-        {
-            rb.gravityScale = 0.25f;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -122,10 +117,12 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             rb.gravityScale = 1;
+            isOnWall = false;
         }
         if (collision.gameObject.CompareTag("IceWall"))
         {
             rb.gravityScale = 1;
+            isOnWall = false;
         }
     }
     private void OnDrawGizmos()
