@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float force = 5f;
+    [SerializeField] public int money = 0;
     Vector3 startMousePos;
     Vector3 endMousePos;
     Vector3 dashDir;
@@ -21,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     public int jumpsAmount = 2;
     public bool canClingToWall = true;
     bool isOnWall;
+    public CircleCollider2D coinCollider;
+    public int luckMultiplayer;      
 
     PowerUpModifier powerUpModifier;
 
@@ -30,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
         jumpsAmount = powerUpModifier.Dash();
         timescale = powerUpModifier.TimeStop();
         dashTimeLimit = powerUpModifier.DashTime();
+        luckMultiplayer = powerUpModifier.Luck();
+        coinCollider.radius = powerUpModifier.CoinCollection();
         canClingToWall = true;
         jumps = jumpsAmount;
     }
@@ -117,6 +122,21 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("BounceWall") && canClingToWall == true)
         {
             jumps = jumpsAmount;
+        }
+        if (coinCollider.CompareTag("Coin") && canClingToWall == true)
+        {
+            //Si el random numero del comprobador esta por debajo o es igual al multiplayer de suerte 
+            //se considera que a caido dentro del rango y por ende recoges dos monedas
+            int comprobador = Random.Range(0, 100);
+
+            if(comprobador <= luckMultiplayer)
+            {
+                money = money + 2;
+            }
+            else 
+            {
+                money++;
+            }            
         }
     }
     private void OnCollisionExit2D(Collision2D collision)

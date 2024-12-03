@@ -9,14 +9,16 @@ public class PowerUpModifier
     int dashes;
     float dashTime;
     float timeStop;
+    int luck;
+    float radious;
 
     public class PowerUpsData
     {
         public int dashes;
         public float dashTime;
         public float timeStop;
-        public float coinCollection;
-        public float luck;        
+        public float radious;
+        public int luck;        
     }
 
     PowerUpsData loadedData;
@@ -49,11 +51,13 @@ public class PowerUpModifier
 
     public float CoinCollection()
     {
-        return 0;
+        radious = loadedData.radious;
+        return radious;
     }
-
-    public float Luck()
+    //Numero del uno al 100, siendo 100 asegurar recoger dos monedas, y 0 solo recoger 1
+    public int Luck()
     {
-        return 0;
+        luck = loadedData.luck;
+        return luck;
     }
 }
