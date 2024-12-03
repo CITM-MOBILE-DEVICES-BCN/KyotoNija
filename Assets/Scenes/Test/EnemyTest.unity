@@ -395,6 +395,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyingFella (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7569952750352945469, guid: 05d0e1ba6c0cc2744b753ceb9ba93431, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -466,6 +470,51 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &766549543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 766549545}
+  - component: {fileID: 766549544}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &766549544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766549543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0cd63adda0b334eaedd52980a349c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDifficulty: 0
+--- !u!4 &766549545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766549543}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.7268777, y: 11.159189, z: -0.010894746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -999,6 +1048,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StaticGoon
       objectReference: {fileID: 0}
+    - target: {fileID: 8546174458760383891, guid: 80d860de8aac2494fb347455164295aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1018,6 +1071,10 @@ PrefabInstance:
     - target: {fileID: 1406948931563917141, guid: b8dff05302024e542855b903863298ae, type: 3}
       propertyPath: m_Name
       value: ShootyGoon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1406948931563917141, guid: b8dff05302024e542855b903863298ae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5513675239653174203, guid: b8dff05302024e542855b903863298ae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1258,6 +1315,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyingFella
       objectReference: {fileID: 0}
+    - target: {fileID: 7569952750352945469, guid: 05d0e1ba6c0cc2744b753ceb9ba93431, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1340,3 +1401,4 @@ SceneRoots:
   - {fileID: 2038020041}
   - {fileID: 966971028}
   - {fileID: 575680733}
+  - {fileID: 766549545}
