@@ -27,8 +27,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         dataManager.AddCoins(1000);
-        dataManager.BuyItem("Dash");
-        dataManager.BuyItem("Dash");
     }
 
     public void SetDifficulty(int height)
