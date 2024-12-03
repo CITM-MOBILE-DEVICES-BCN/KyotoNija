@@ -31,10 +31,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    internal virtual void Attack()
-    {
-
-    }
 }
 
 public enum Direction

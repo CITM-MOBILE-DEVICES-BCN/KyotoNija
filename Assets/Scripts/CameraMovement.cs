@@ -11,8 +11,8 @@ public class CameraMovement : MonoBehaviour
 
     public const int distanceParam = 8;
 
-    Vector2 normalSpeed = new Vector2(0, 8);
-    Vector2 closeSpeed  = new Vector2(0, 20);
+    Vector2 normalSpeed = new Vector2(0, 6);
+    Vector2 closeSpeed  = new Vector2(0, 12);
 
     // Update is called once per frame
     void Update()

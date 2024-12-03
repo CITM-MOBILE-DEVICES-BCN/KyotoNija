@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1622737910156482297}
   - component: {fileID: 5657688470289429145}
   - component: {fileID: 2282076395282056561}
+  - component: {fileID: 1745753008657556662}
   m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0}
+  shotSpeed: 12
 --- !u!212 &5657688470289429145
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -108,7 +110,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 7443262672806501660}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1bb11eca9be8c1d4eb61968cd1317a1a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -147,3 +149,16 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
   m_UseDelaunayMesh: 0
+--- !u!114 &1745753008657556662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443262672806501660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917a532ed5a90ed439411ee0b4c9a09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitType: 1
