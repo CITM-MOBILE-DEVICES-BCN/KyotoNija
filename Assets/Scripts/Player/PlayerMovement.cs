@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     Ray test;
     Ray velocityRayTest;
 
+    public float timescale = 0.25f;
     float dashTimer;
     public float dashTimeLimit = 3;
     int jumps = 2;
@@ -83,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void SlowTimeSpeed()
     {
-        Time.timeScale = 0.25f;
+        Time.timeScale = timescale;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
     public void GetPlayerOffWall()
