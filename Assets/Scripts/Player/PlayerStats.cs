@@ -10,24 +10,14 @@ public class PlayerStats : MonoBehaviour
 
     private SpriteRenderer renderer;
     private Rigidbody2D rb;
+    private PlayerMovement movement;
 
     private void Awake()
     {
         renderer = GetComponent<SpriteRenderer>();
         renderer.color = Color.red;
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //if (!iFrames)
-        //{
-        //    hp--;
-        //    iFrames = true;
-        //    renderer.color = Color.green;
-        //    //rb.velocity *= -1;
-        //    Invoke("DeactivateIFrames", 1.2f);
-        //}
+        movement = GetComponent<PlayerMovement>();
     }
 
     private void DamageDealt()
@@ -35,14 +25,20 @@ public class PlayerStats : MonoBehaviour
         if (!iFrames)
         {
             hp--;
+            movement?.GetPlayerOffWall();
             iFrames = true;
             renderer.color = Color.green;
+            if(hp  <= 0)
+            {
+                print("dead");
+            }
+
             //rb.velocity *= -1;
             Invoke("DeactivateIFrames", 1.2f);
         }
     }
 
-    void DeactivateIFrames()
+    private void DeactivateIFrames()
     {
         renderer.color = Color.red;
         iFrames = false;

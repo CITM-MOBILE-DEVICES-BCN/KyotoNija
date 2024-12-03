@@ -11,6 +11,7 @@ public class ContinuousRoomSpawnerWithTutorial : MonoBehaviour
 
     private Queue<GameObject> spawnedRooms = new Queue<GameObject>();
     private float nextSpawnHeight;
+    [SerializeField] private EnemyProvider enemyProvider;
 
     private void Start()
     {
