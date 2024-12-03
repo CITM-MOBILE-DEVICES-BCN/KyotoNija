@@ -12,10 +12,10 @@ public class DetectionArea : MonoBehaviour
         collider = GetComponent<Collider2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        var enemy = transform.parent.GetComponent<Enemy>();
-        if (enemy)
+        var enemy = transform.parent.GetComponent<Enemy>() as IAttackable;
+        if (enemy != null)
         {
             enemy.Attack();
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StaticEnemy : Enemy
+public class StaticEnemy : Enemy , IAttackable
 {
     private PolygonCollider2D frustrum;
     private GameObject frustrumObject;
@@ -30,10 +30,9 @@ public class StaticEnemy : Enemy
 
     }
 
-    internal override void Attack()
+    void IAttackable.Attack()
     {
         print("attack for");
         animator.SetTrigger("Attack");
     }
-
 }

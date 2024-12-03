@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7663909017604591785}
   - component: {fileID: 454769521561322182}
   - component: {fileID: 6656308763529519095}
+  - component: {fileID: 5767839166419073713}
   m_Layer: 3
   m_Name: PhonyPlayer
   m_TagString: Untagged
@@ -226,6 +227,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &5767839166419073713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3518589475878805772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917a532ed5a90ed439411ee0b4c9a09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitType: 0
 --- !u!1 &4474450794170635325
 GameObject:
   m_ObjectHideFlags: 0
