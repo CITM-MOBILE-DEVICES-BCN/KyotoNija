@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7890020618997322988}
   m_Layer: 0
   m_Name: Platform (5)
-  m_TagString: Wall
+  m_TagString: IceWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 1775541609222363388}
   m_Layer: 0
   m_Name: Platform (4)
-  m_TagString: Wall
+  m_TagString: BounceWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,8 +318,8 @@ Transform:
   m_GameObject: {fileID: 1220188738786125333}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.07, y: -5.92, z: 0.11133751}
-  m_LocalScale: {x: 4.5, y: 1.1489, z: 1}
+  m_LocalPosition: {x: -17.701, y: -5.92, z: 0.11133751}
+  m_LocalScale: {x: 3.762, y: 1.1489, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1149703559175793456}
@@ -366,7 +366,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -385,7 +385,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1220188738786125333}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1bb11eca9be8c1d4eb61968cd1317a1a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -510,8 +510,8 @@ Transform:
   m_GameObject: {fileID: 3791053907919974161}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.48, y: 10.58, z: 0.11133751}
-  m_LocalScale: {x: 4.5, y: 1.1489, z: 1}
+  m_LocalPosition: {x: -17.9285, y: 10.58, z: 0.11133751}
+  m_LocalScale: {x: 3.39705, y: 1.1489, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1149703559175793456}
@@ -801,8 +801,8 @@ Transform:
   m_GameObject: {fileID: 8501090745415054538}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.14, y: -6.06, z: 0.11133751}
-  m_LocalScale: {x: 4.5, y: 1.1489, z: 1}
+  m_LocalPosition: {x: -6.695, y: -6.06, z: 0.11133751}
+  m_LocalScale: {x: 3.3901646, y: 1.1489, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1149703559175793456}
@@ -917,7 +917,7 @@ GameObject:
   - component: {fileID: 3619005429060828102}
   m_Layer: 0
   m_Name: Platform (1)
-  m_TagString: Wall
+  m_TagString: IceWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -979,7 +979,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1109,7 +1109,7 @@ GameObject:
   - component: {fileID: 5550209996402713733}
   m_Layer: 0
   m_Name: Platform (6)
-  m_TagString: Wall
+  m_TagString: BounceWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1123,8 +1123,8 @@ Transform:
   m_GameObject: {fileID: 9027471762197589192}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.55, y: 10.44, z: 0.11133751}
-  m_LocalScale: {x: 4.5, y: 1.1489, z: 1}
+  m_LocalPosition: {x: -6.8985, y: 10.44, z: 0.11133751}
+  m_LocalScale: {x: 3.80295, y: 1.1489, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1149703559175793456}
@@ -1171,7 +1171,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1190,7 +1190,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 9027471762197589192}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1bb11eca9be8c1d4eb61968cd1317a1a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

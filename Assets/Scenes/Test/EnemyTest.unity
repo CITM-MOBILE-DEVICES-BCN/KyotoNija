@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 273150740}
   force: 15
+  timescale: 0.25
   dashTimeLimit: 3
   jumpsAmount: 2
   canClingToWall: 1
