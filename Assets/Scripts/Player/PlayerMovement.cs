@@ -22,8 +22,14 @@ public class PlayerMovement : MonoBehaviour
     public bool canClingToWall = true;
     bool isOnWall;
 
+    PowerUpModifier powerUpModifier;
+
     private void Start()
-    {
+    {        
+        powerUpModifier = new PowerUpModifier();
+        jumpsAmount = powerUpModifier.Dash();
+        timescale = powerUpModifier.TimeStop();
+        dashTimeLimit = powerUpModifier.DashTime();
         canClingToWall = true;
         jumps = jumpsAmount;
     }
