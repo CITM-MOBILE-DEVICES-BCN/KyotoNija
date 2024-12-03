@@ -1043,7 +1043,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1149703559175793456}
-  - component: {fileID: 1208033007177311238}
+  - component: {fileID: 7647487987244335996}
   m_Layer: 0
   m_Name: Room2
   m_TagString: Untagged
@@ -1078,7 +1078,7 @@ Transform:
   - {fileID: 2858307380614389614}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1208033007177311238
+--- !u!114 &7647487987244335996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1090,12 +1090,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbcaaed6297745146baee382b02abdb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPool:
+  - {fileID: 8546174458760383891, guid: 80d860de8aac2494fb347455164295aa, type: 3}
+  - {fileID: 1406948931563917141, guid: b8dff05302024e542855b903863298ae, type: 3}
+  - {fileID: 7569952750352945469, guid: 05d0e1ba6c0cc2744b753ceb9ba93431, type: 3}
+  - {fileID: 6800924643065055233, guid: c13a0898844bc9345a437962918b5638, type: 3}
+  - {fileID: 3518589475878805772, guid: 24502886495d0e44ba3a41db552325f0, type: 3}
   spawnPoints:
-  - {fileID: 6026001982748546176}
-  - {fileID: 1651561351177466565}
-  - {fileID: 1052406386861836612}
-  - {fileID: 1786179479634671665}
-  enemyPool: []
+  - {fileID: 6322244225032962319}
+  - {fileID: 5966461145170166051}
+  - {fileID: 5453873170760784972}
+  - {fileID: 2858307380614389614}
 --- !u!1 &9027471762197589192
 GameObject:
   m_ObjectHideFlags: 0

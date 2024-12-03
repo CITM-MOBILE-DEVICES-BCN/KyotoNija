@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ContinuousRoomSpawnerWithTutorial : MonoBehaviour
+public class LevelCreator : MonoBehaviour
 {
     public GameObject initialRoom;
     public GameObject[] roomPool;
