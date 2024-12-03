@@ -1,6 +1,8 @@
 using MyNavigationSystem;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class ShopManager : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button purchaseButton3;
     [SerializeField] private Button purchaseButton4;
     [SerializeField] private Button purchaseButton5;
+    [SerializeField] private TMP_Text currencyText;
 
     [Header("Button Actions")]
     [SerializeField] private string mainMenuSceneId;
@@ -20,13 +23,19 @@ public class ShopManager : MonoBehaviour
     {
         mainMenuButton.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(mainMenuSceneId));
 
-        // Configurar botones de compra
+
         purchaseButton1.onClick.AddListener(() => BuyItem("Dash"));
         purchaseButton2.onClick.AddListener(() => BuyItem("Dash time"));
         purchaseButton3.onClick.AddListener(() => BuyItem("Time stop"));
         purchaseButton4.onClick.AddListener(() => BuyItem("Coin collection"));
         purchaseButton5.onClick.AddListener(() => BuyItem("Luck"));
     }
+
+    private void Update()
+    {
+        currencyText.text = "Currency: " + GameManager.Instance.GetCoins();
+    }
+
 
     void TimeStop()
     {
@@ -37,15 +46,7 @@ public class ShopManager : MonoBehaviour
     }
     void BuyItem(string itemName)
     {
-        // Llama a la función de compra del GameManager
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.BuyItem(itemName);
-        }
-        else
-        {
-            Debug.LogError("GameManager.Instance no está inicializado.");
-        }
+        GameManager.Instance.BuyItem(itemName);
     }
 
 
