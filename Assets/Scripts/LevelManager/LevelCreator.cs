@@ -48,6 +48,10 @@ public class LevelCreator : MonoBehaviour
 
         GameObject newRoom = Instantiate(roomPrefab, new Vector3(20, nextSpawnHeight + 13, 0), Quaternion.identity);
 
+        var room = newRoom.GetComponent<Spawns>();
+        room.player = player.GetComponent<PlayerStats>();
+        room.enemyProvider = enemyProvider;
+
         spawnedRooms.Enqueue(newRoom);
 
         nextSpawnHeight += roomHeight;

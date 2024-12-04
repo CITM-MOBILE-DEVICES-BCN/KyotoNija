@@ -122,6 +122,93 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &200230446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200230451}
+  - component: {fileID: 200230450}
+  - component: {fileID: 200230449}
+  - component: {fileID: 200230448}
+  - component: {fileID: 200230447}
+  m_Layer: 0
+  m_Name: provisionalsingletons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &200230447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200230446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7395900c7e1724daca6214c24037c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpPrefabs: []
+--- !u!114 &200230448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200230446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d577ce132c3c4d48a5e19e4ca9d16b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &200230449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200230446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0cd63adda0b334eaedd52980a349c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDifficulty: 0
+--- !u!114 &200230450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200230446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff03256fd70d0784a8f596d607b883f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneManager: {fileID: 200230448}
+  popUpManager: {fileID: 200230447}
+--- !u!4 &200230451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200230446}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.844662, y: 80.69562, z: -0.83131987}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &501585775
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +931,7 @@ MonoBehaviour:
   settingsButton: {fileID: 501585777}
   shopButton: {fileID: 1859423847}
   exitButton: {fileID: 873739987}
-  inGameSceneName: InGame_1
+  inGameSceneName: EnemyTest
   settingsPanelId: SettingsPanel
   shopSceneName: Shop_1
   exitSceneName: GameSelector
@@ -1983,3 +2070,4 @@ SceneRoots:
   - {fileID: 1920627999}
   - {fileID: 2020429518}
   - {fileID: 1347607122}
+  - {fileID: 200230451}

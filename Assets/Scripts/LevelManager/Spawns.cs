@@ -3,49 +3,29 @@ using UnityEngine;
 
 public class Spawns : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> enemyPool;
+    public EnemyProvider enemyProvider;
+
     public Transform[] spawnPoints;
-    Difficulty gameDifficulty;
+
+    public PlayerStats player;
+
     void Start()
     {
-        gameDifficulty = GameManager.Instance.gameDifficulty;
-        int maxEnemiesToChooseFrom = CalculateMaxEnemies(gameDifficulty);
 
-        SpawnRandomEnemy(maxEnemiesToChooseFrom);
+        SpawnRandomEnemy();
     }
 
-    private void SpawnRandomEnemy(int maxEnemiesToChooseFrom)
+    private void SpawnRandomEnemy()
     {
+
         for (int i = 0; i < spawnPoints.Length; i++)
         {
-            if (enemyPool.Count == 0 || maxEnemiesToChooseFrom <= 0) return;
-            Debug.Log("Spawning enemy");
-            int enemyIndex = Random.Range(0, maxEnemiesToChooseFrom);
-            Instantiate(enemyPool[enemyIndex], spawnPoints[i].position, Quaternion.identity);
+
+            var enemy = enemyProvider.ProvideEnemy();
+            enemy.player = player;
+
+            Instantiate(enemy, spawnPoints[i].position, Quaternion.identity);
         }
     }
 
-    private int CalculateMaxEnemies(Difficulty gameDifficulty)
-    {
-        if (gameDifficulty == Difficulty.BABY)
-        {
-            return 2;
-        }
-        else if (gameDifficulty == Difficulty.EASY)
-        {
-            return 3;
-        }
-        else if (gameDifficulty == Difficulty.HARDER)
-        {
-            return 4;
-        }
-        else if (gameDifficulty == Difficulty.HERALD_OF_CHAOS)
-        {
-            return 5;
-        }
-        else
-        {
-            return enemyPool.Count;
-        }
-    }
 }

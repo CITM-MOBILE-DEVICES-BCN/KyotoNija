@@ -31,6 +31,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    protected void FixedUpdate()
+    {
+        if (Vector2.Distance(player.transform.position, transform.position) > 45)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }
 
 public enum Direction

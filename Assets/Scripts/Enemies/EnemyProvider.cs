@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,9 @@ using UnityEngine;
 public class EnemyProvider : ScriptableObject
 {
     public Enemy[] enemyPrefabs;
-
-
     public Enemy ProvideEnemy()
     {
+
         var difficulty = GameManager.Instance.gameDifficulty;
 
         switch (difficulty)
