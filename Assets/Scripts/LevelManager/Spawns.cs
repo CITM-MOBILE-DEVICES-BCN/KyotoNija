@@ -22,9 +22,9 @@ public class Spawns : MonoBehaviour
         {
 
             var enemy = enemyProvider.ProvideEnemy();
-            enemy.player = player;
 
             Instantiate(enemy, spawnPoints[i].position, Quaternion.identity);
+            enemy.player = player;
         }
     }
 

@@ -1090,17 +1090,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbcaaed6297745146baee382b02abdb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPool:
-  - {fileID: 8546174458760383891, guid: 80d860de8aac2494fb347455164295aa, type: 3}
-  - {fileID: 1406948931563917141, guid: b8dff05302024e542855b903863298ae, type: 3}
-  - {fileID: 7569952750352945469, guid: 05d0e1ba6c0cc2744b753ceb9ba93431, type: 3}
-  - {fileID: 6800924643065055233, guid: c13a0898844bc9345a437962918b5638, type: 3}
-  - {fileID: 3518589475878805772, guid: 24502886495d0e44ba3a41db552325f0, type: 3}
+  enemyProvider: {fileID: 11400000, guid: e0fb771fa52dd1641a990653672f75f6, type: 2}
   spawnPoints:
   - {fileID: 6322244225032962319}
   - {fileID: 5966461145170166051}
   - {fileID: 5453873170760784972}
   - {fileID: 2858307380614389614}
+  player: {fileID: 0}
 --- !u!1 &9027471762197589192
 GameObject:
   m_ObjectHideFlags: 0
