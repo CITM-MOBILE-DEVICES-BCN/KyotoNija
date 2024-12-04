@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        dataManager.AddCoins(1000);
+
     }
 
     public void SetDifficulty(int height)

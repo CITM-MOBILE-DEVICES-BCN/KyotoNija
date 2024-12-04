@@ -23,11 +23,12 @@ public class Coins : MonoBehaviour
             //CHANCE DE REOGER DOS MONEDAS
             if(comprobador <= luckMultiplayer)
             {
-                GameManager.Instance.AddCoins(2);
+                GameManager.Instance.AddCoins(20);
             }
             else
             {
-                GameManager.Instance.AddCoins(1);
+                GameManager.Instance.AddCoins(10);
+                Debug.Log("monedilla");
             }      
             
             Destroy(gameObject);
