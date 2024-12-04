@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Shop_1.unity
     guid: 883fd2d1c41fa094db816e4b2e897f41
   - enabled: 1
-    path: Assets/Scenes/Test/EnemyTest.unity
+    path: Assets/Scenes/InGame.unity
     guid: f2b7ce81a4c552649ae5da20ea6ae865
   m_configObjects: {}

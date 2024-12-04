@@ -977,7 +977,7 @@ MonoBehaviour:
   settingsButton: {fileID: 501585777}
   shopButton: {fileID: 1859423847}
   exitButton: {fileID: 873739987}
-  inGameSceneName: EnemyTest
+  inGameSceneName: InGame
   settingsPanelId: SettingsPanel
   shopSceneName: Shop_1
   exitSceneName: GameSelector
