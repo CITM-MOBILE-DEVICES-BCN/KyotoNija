@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a28816a01bb0f468f5540d029b0279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUp: {fileID: 3722237208355962559, guid: edf42599823f739448fd2027e8009e1a, type: 3}
   player: {fileID: 0}
   direction: 0
   crosshair: {fileID: 4958804991711906071}

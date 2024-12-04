@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d27d9d1bf6b9d448f65681e27d94f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUp: {fileID: 3722237208355962559, guid: edf42599823f739448fd2027e8009e1a, type: 3}
   player: {fileID: 0}
   direction: 1
   movementSpeed: 5

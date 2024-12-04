@@ -149,12 +149,28 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("BounceWall") && canClingToWall == true)
         {
             jumps = jumpsAmount;
+        }        
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            rb.gravityScale = 1;
+            isOnWall = false;
         }
-        //TEMPORAL POWER UP ACTIVATION
-       
+        if (collision.gameObject.CompareTag("IceWall"))
+        {
+            rb.gravityScale = 1;
+            isOnWall = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //TEMPORAL POWER UP ACTIVATION       
         if (collision.gameObject.CompareTag("TemporalPowerUp"))
         {
-            if(activeTPU == true)
+            if (activeTPU == true)
             {
                 TurnDownTPU();
             }
@@ -187,19 +203,6 @@ public class PlayerMovement : MonoBehaviour
             }
             activeTPU = true;
             timerTPU = 10;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            rb.gravityScale = 1;
-            isOnWall = false;
-        }
-        if (collision.gameObject.CompareTag("IceWall"))
-        {
-            rb.gravityScale = 1;
-            isOnWall = false;
         }
     }
     private void OnDrawGizmos()

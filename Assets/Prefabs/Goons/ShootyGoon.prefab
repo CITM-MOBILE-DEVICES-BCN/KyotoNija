@@ -48,11 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f857245d8cc6414db1bd934259e7dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUp: {fileID: 3722237208355962559, guid: edf42599823f739448fd2027e8009e1a, type: 3}
+  player: {fileID: 0}
   direction: 0
   crosshair: {fileID: 9166303907291840764}
   bulletPrefab: {fileID: 1622737910156482297, guid: 4b3defa008a203342abc941bf48c7858, type: 3}
   aimSpeed: 0.121
-  player: {fileID: 0}
 --- !u!212 &3807461234345434563
 SpriteRenderer:
   m_ObjectHideFlags: 0

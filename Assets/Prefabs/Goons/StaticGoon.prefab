@@ -373,6 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd991e4787c8ec4288284ed992004df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUp: {fileID: 3722237208355962559, guid: edf42599823f739448fd2027e8009e1a, type: 3}
   player: {fileID: 0}
   direction: 1
   rotationZ: 0.356

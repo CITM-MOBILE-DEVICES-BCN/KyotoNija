@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301555f5d128f924ab46a55cd823cada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUp: {fileID: 3722237208355962559, guid: edf42599823f739448fd2027e8009e1a, type: 3}
   player: {fileID: 0}
   direction: 1
   enemyPrefab: {fileID: 7041778714488997853, guid: 05d0e1ba6c0cc2744b753ceb9ba93431, type: 3}
