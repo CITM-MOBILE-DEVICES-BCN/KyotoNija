@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     public void SetDifficulty(int height)
     {
-        if (height > 0 && height < 200)
+        if (height > -1 && height < 200)
         {
             gameDifficulty = Difficulty.BABY;
         }

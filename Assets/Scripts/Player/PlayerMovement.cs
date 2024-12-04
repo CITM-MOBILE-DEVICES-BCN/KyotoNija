@@ -22,8 +22,8 @@ public class PlayerMovement : MonoBehaviour
     public int jumpsAmount = 2;
     public bool canClingToWall = true;
     bool isOnWall;
-    public CircleCollider2D coinCollider;
-    public int luckMultiplayer;      
+    public int luckMultiplayer;
+    public CircleCollider2D coinCollector;
 
     PowerUpModifier powerUpModifier;
 
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         timescale = powerUpModifier.TimeStop();
         dashTimeLimit = powerUpModifier.DashTime();
         luckMultiplayer = powerUpModifier.Luck();
-        coinCollider.radius = powerUpModifier.CoinCollection();
+        coinCollector.radius = powerUpModifier.CoinCollection();
         canClingToWall = true;
         jumps = jumpsAmount;
     }
@@ -63,6 +63,11 @@ public class PlayerMovement : MonoBehaviour
             }
             dashTimer = dashTimeLimit;
         }
+
+        if (Input.GetMouseButtonUp(0)){
+            print("button");
+        }
+
         
         if (Input.GetMouseButtonUp(0) && dashTimer > 0 && jumps > 0)
         {
@@ -102,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canClingToWall = false;
         rb.gravityScale = 1;
+        jumps = jumpsAmount;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -122,22 +128,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("BounceWall") && canClingToWall == true)
         {
             jumps = jumpsAmount;
-        }
-        if (coinCollider.CompareTag("Coin") && canClingToWall == true)
-        {
-            //Si el random numero del comprobador esta por debajo o es igual al multiplayer de suerte 
-            //se considera que a caido dentro del rango y por ende recoges dos monedas
-            int comprobador = Random.Range(0, 100);
-
-            if(comprobador <= luckMultiplayer)
-            {
-                money = money + 2;
-            }
-            else 
-            {
-                money++;
-            }            
-        }
+        }        
     }
     private void OnCollisionExit2D(Collision2D collision)
     {

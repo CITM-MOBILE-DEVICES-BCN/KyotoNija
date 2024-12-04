@@ -8,6 +8,7 @@ TagManager:
   - IceWall
   - BounceWall
   - Coin
+  - CoinCollector
   layers:
   - Default
   - TransparentFX

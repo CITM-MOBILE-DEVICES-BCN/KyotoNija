@@ -14,6 +14,13 @@ public class ShootyEnemy : Enemy
 
     protected void FixedUpdate()
     {
+        base.FixedUpdate();
+
+        if(Vector2.Distance(transform.position, player.transform.position) > 12)
+        {
+            return;
+        }
+
         Vector2 direction = player.transform.position - crosshair.position;
         direction.Normalize();
         crosshair.position += (Vector3) direction * aimSpeed;
