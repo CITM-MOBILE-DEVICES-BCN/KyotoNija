@@ -22,7 +22,8 @@ public class PlayerMovement : MonoBehaviour
     public int jumpsAmount = 2;
     public bool canClingToWall = true;
     bool isOnWall;
-    public int luckMultiplayer;      
+    public int luckMultiplayer;
+    public CircleCollider2D coinCollector;
 
     PowerUpModifier powerUpModifier;
 
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         timescale = powerUpModifier.TimeStop();
         dashTimeLimit = powerUpModifier.DashTime();
         luckMultiplayer = powerUpModifier.Luck();
+        coinCollector.radius = powerUpModifier.CoinCollection();
         canClingToWall = true;
         jumps = jumpsAmount;
     }
