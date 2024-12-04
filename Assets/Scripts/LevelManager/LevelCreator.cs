@@ -35,6 +35,14 @@ public class LevelCreator : MonoBehaviour
     {
         GameObject tutorialRoom = Instantiate(initialRoom, new Vector3(20, 13, 0), Quaternion.identity);
         spawnedRooms.Enqueue(tutorialRoom);
+        // ---Assign player----//
+        var room = tutorialRoom.GetComponent<Spawns>();
+        var playerSats = player.gameObject.GetComponent<PlayerStats>();
+        room.player =playerSats;
+
+        // ---Assign enemyProvider----//
+        room.enemyProvider = enemyProvider;
+
         nextSpawnHeight = roomHeight;
     }
 
@@ -48,6 +56,7 @@ public class LevelCreator : MonoBehaviour
 
         GameObject newRoom = Instantiate(roomPrefab, new Vector3(20, nextSpawnHeight + 13, 0), Quaternion.identity);
 
+        // ---Assign player----//
         var room = newRoom.GetComponent<Spawns>();
         room.player = player.GetComponent<PlayerStats>();
         room.enemyProvider = enemyProvider;

@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 7814212928831745232}
   - component: {fileID: 7513634561374815402}
   - component: {fileID: 8863819713407537101}
+  - component: {fileID: 5724524171896421553}
   - component: {fileID: 6635927693096402792}
+  - component: {fileID: 7514730618265038550}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -150,6 +152,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &5724524171896421553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565205481144866003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9500ac3cf0487a47a1e04729703936d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 3
 --- !u!114 &6635927693096402792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +186,41 @@ MonoBehaviour:
   canClingToWall: 1
   luckMultiplayer: 0
   coinCollector: {fileID: 5017446128331309071}
+--- !u!70 &7514730618265038550
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565205481144866003}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &7581177387975821030
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,8 @@ public class ShootyEnemy : Enemy
     {
         base.FixedUpdate();
 
-        if(Vector2.Distance(transform.position, player.transform.position) > 12)
+
+        if(!player || Vector2.Distance(transform.position, player.transform.position) > 12)
         {
             return;
         }

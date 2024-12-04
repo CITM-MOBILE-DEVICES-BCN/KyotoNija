@@ -19,6 +19,8 @@ public class StaticEnemy : Enemy , IAttackable
 
     private void FixedUpdate()
     {
+        base.FixedUpdate();
+
         frustrumObject.transform.Rotate(0, 0, rotationZ);
         rotationFrames--;
 
