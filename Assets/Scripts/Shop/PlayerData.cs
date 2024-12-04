@@ -12,6 +12,11 @@ public class PlayerData
     public int TimeStopLevel = 0;
     public int CoinCollectionLevel = 0;
     public int LuckLevel = 0;
+    public int DashPrice = 10;
+    public int DashTimePrice = 10;
+    public int TimeStopPrice = 10;
+    public int CoinCollectionPrice = 10;
+    public int LuckPrice = 10;
 }
 
 [System.Serializable]
@@ -48,6 +53,56 @@ public class GameDataManager
         return playerData.currency;
     }
 
+    public int DashLevel()
+    {
+        return playerData.DashLevel;
+    }
+
+    public int TimeStopLevel()
+    {
+        return playerData.TimeStopLevel;
+    }
+
+    public int CoinCollectionLevel()
+    {
+        return playerData.CoinCollectionLevel;
+    }
+
+    public int DashTimeLevel()
+    {
+        return playerData.DashTimeLevel;
+    }
+
+    public int LuckLevel()
+    {
+        return playerData.LuckLevel;
+    }
+
+    public int DashPrice()
+    {
+        return playerData.DashPrice;
+    }
+
+    public int DashTimePrice()
+    {
+        return playerData.DashTimePrice;
+    }
+
+    public int TimeStopPrice()
+    {
+        return playerData.TimeStopPrice;
+    }
+
+    public int CoinCollectionPrice()
+    {
+        return playerData.CoinCollectionPrice;
+    }
+
+    public int LuckPrice()
+    {
+        return playerData.LuckPrice;
+    }
+
     public void AddCoins(int amount)
     {
         playerData.currency += amount;
@@ -72,6 +127,7 @@ public class GameDataManager
             item.Price *= 5;
 
             UpdatePlayerDataItemLevel(itemName, item.level);
+            UpdatePlayerDataItemPrice(itemName, item.Price);
 
             SavePlayerData();
             SaveItemsData();
@@ -154,6 +210,31 @@ public class GameDataManager
                 break;
             default:
                 Debug.LogError($"Ítem {itemName} no tiene un nivel asociado en PlayerData.");
+                break;
+        }
+    }
+
+    private void UpdatePlayerDataItemPrice(string itemName, int newPrice)
+    {
+        switch (itemName)
+        {
+            case "Dash":
+                playerData.DashPrice = newPrice;
+                break;
+            case "Dash time":
+                playerData.DashTimePrice = newPrice;
+                break;
+            case "Time stop":
+                playerData.TimeStopPrice = newPrice;
+                break;
+            case "Coin collection":
+                playerData.CoinCollectionPrice = newPrice;
+                break;
+            case "Luck":
+                playerData.LuckPrice = newPrice;
+                break;
+            default:
+                Debug.LogError($"Ítem {itemName} no tiene un precio asociado en PlayerData.");
                 break;
         }
     }

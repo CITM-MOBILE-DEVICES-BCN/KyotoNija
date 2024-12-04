@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 
     public Difficulty gameDifficulty;
 
+    public PowerUpLevel powerUpLevel;
+
+    public PowerUpPrice powerUpPrice;
+
     private GameDataManager dataManager;
 
     private void Awake()
@@ -62,6 +66,56 @@ public class GameManager : MonoBehaviour
         return dataManager.GetCoins();
     }
 
+    public int GetLevel(PowerUpLevel powerUpLevel)
+    {
+        int level = 0;
+
+        switch (powerUpLevel)
+        {
+            case PowerUpLevel.DASHLEVEL:
+                level = dataManager.DashLevel();
+                break;
+            case PowerUpLevel.DASHTIMELEVEL:
+                level = dataManager.DashTimeLevel();
+                break;
+            case PowerUpLevel.TIMESTOPLEVEL:
+                level = dataManager.TimeStopLevel();
+                break;
+            case PowerUpLevel.COINCOLLECTIONLEVEL:
+                level = dataManager.CoinCollectionLevel();
+                break;
+            case PowerUpLevel.LUCKLEVEL:
+                level = dataManager.LuckLevel();
+                break;
+        }
+        return level;
+    }
+
+    public int GetPrice(PowerUpPrice powerUpPrice)
+    {
+        int price = 0;
+
+        switch (powerUpPrice)
+        {
+            case PowerUpPrice.DASHPRICE:
+                price = dataManager.DashPrice();
+                break;
+            case PowerUpPrice.DASHTIMEPRICE:
+                price = dataManager.DashTimePrice();
+                break;
+            case PowerUpPrice.TIMESTOPPRICE:
+                price = dataManager.TimeStopPrice();
+                break;
+            case PowerUpPrice.COINCOLLECTIONPRICE:
+                price = dataManager.CoinCollectionPrice();
+                break;
+            case PowerUpPrice.LUCKPRICE:
+                price = dataManager.LuckPrice();
+                break;
+        }
+        return price;
+    }
+
     public void AddCoins(int amount)
     {
         dataManager.AddCoins(amount);
@@ -81,4 +135,22 @@ public enum Difficulty
     HARD,
     HARDER,
     HERALD_OF_CHAOS
+}
+
+public enum PowerUpLevel
+{
+    DASHLEVEL,
+    DASHTIMELEVEL,
+    TIMESTOPLEVEL,
+    COINCOLLECTIONLEVEL,
+    LUCKLEVEL,
+}
+
+public enum PowerUpPrice
+{
+    DASHPRICE,
+    DASHTIMEPRICE,
+    TIMESTOPPRICE,
+    COINCOLLECTIONPRICE,
+    LUCKPRICE,
 }
