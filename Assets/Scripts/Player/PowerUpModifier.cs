@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class PowerUpModifier 
 {
-    string filePath;
-    string json;
+    static string filePath;
+    static string json;
     int dashes;
     float dashTime;
     float timeStop;
@@ -22,13 +23,12 @@ public class PowerUpModifier
     }
 
     PowerUpsData loadedData;
-
-    private void Start()
+   
+     public void Start()
     {
-        //filePath = Application.dataPath + "/SavedFiles/setting.json";
-        //json = System.IO.File.ReadAllText(filePath);
-
-       loadedData = JsonUtility.FromJson<PowerUpsData>(json);
+        filePath = Path.Combine(Application.persistentDataPath, "ItemsData.json");
+        json = System.IO.File.ReadAllText(filePath);
+        loadedData = JsonUtility.FromJson<PowerUpsData>(json);
     }
 
    public int Dash()

@@ -25,16 +25,22 @@ public class PlayerMovement : MonoBehaviour
     public int luckMultiplayer;
     public CircleCollider2D coinCollector;
 
+    //Temporal Power Up
+    int selectorTPU; 
+    bool activeTPU = false;
+    float timerTPU;
+
     PowerUpModifier powerUpModifier;
 
     private void Start()
     {        
         powerUpModifier = new PowerUpModifier();
-        jumpsAmount = powerUpModifier.Dash();
-        timescale = powerUpModifier.TimeStop();
-        dashTimeLimit = powerUpModifier.DashTime();
-        luckMultiplayer = powerUpModifier.Luck();
-        coinCollector.radius = powerUpModifier.CoinCollection();
+        powerUpModifier.Start();
+        jumpsAmount += powerUpModifier.Dash();
+        timescale += powerUpModifier.TimeStop();
+        dashTimeLimit += powerUpModifier.DashTime();
+        luckMultiplayer += powerUpModifier.Luck();
+        coinCollector.radius += powerUpModifier.CoinCollection();
         canClingToWall = true;
         jumps = jumpsAmount;
     }
@@ -86,6 +92,16 @@ public class PlayerMovement : MonoBehaviour
             canClingToWall = true;
             jumps--;
             dashTimer = dashTimeLimit;
+        }   
+
+        if(activeTPU == true)
+        {            
+            WaitForSeconds.Equals(0, 10); //NOTA: Que despues de unos segundos se desactive, preguntar Pau           
+            timerTPU -= 1*Time.deltaTime;
+            if (timerTPU <= 0)
+            {
+                TurnDownTPU();
+            }           
         }
 
         endMousePos = Input.mousePosition;
@@ -128,7 +144,45 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("BounceWall") && canClingToWall == true)
         {
             jumps = jumpsAmount;
-        }        
+        }
+        //TEMPORAL POWER UP ACTIVATION
+       
+        if (collision.gameObject.CompareTag("TemporalPowerUp"))
+        {
+            if(activeTPU == true)
+            {
+                TurnDownTPU();
+            }
+            selectorTPU = Random.Range(0, 4);
+
+            switch (selectorTPU)
+            {
+                case 0:
+                    Debug.Log("DASHES");
+                    jumps++;                        //DASHES
+                    break;
+                case 1:
+                    Debug.Log("TIMESCALE");
+                    timescale -= 0.05f;             //TIMESCALE
+                    break;
+                case 2:
+                    Debug.Log("LUCK");
+
+                    luckMultiplayer += 25;          //LUCK
+                    break;
+                case 3:
+                    Debug.Log("DASH TIME LIMIT");
+
+                    dashTimeLimit++;                //DASH TIME LIMIT
+                    break;
+                case 4:
+                    Debug.Log("COIN COLLECTOR RADIOUS");
+                    coinCollector.radius += 0.25f;  //COIN COLLECTOR RADIOUS
+                    break;
+            }
+            activeTPU = true;
+            timerTPU = 10;
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -155,5 +209,28 @@ public class PlayerMovement : MonoBehaviour
         velocityRayTest.direction = rb.velocity;
         velocityRayTest.origin = transform.position;
         Gizmos.DrawRay(velocityRayTest);
+    }
+
+    void TurnDownTPU()
+    {
+        switch (selectorTPU)
+        {
+            case 0:
+                jumps--;                        //DASHES
+                break;
+            case 1:
+                timescale += 0.05f;             //TIMESCALE
+                break;
+            case 2:
+                luckMultiplayer -= 25;          //LUCK
+                break;
+            case 3:
+                dashTimeLimit--;                //DASH TIME LIMIT
+                break;
+            case 4:
+                coinCollector.radius -= 0.25f;  //COIN COLLECTOR RADIOUS
+                break;
+        }
+        activeTPU = false;
     }
 }

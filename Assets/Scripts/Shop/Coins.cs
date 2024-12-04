@@ -14,7 +14,6 @@ public class Coins : MonoBehaviour
     private void Start()
     {
         luckMultiplayer = powerUpModifier.Luck();
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
