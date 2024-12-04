@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     private Collider2D collider;
     protected Animator animator;
 
+    [SerializeField] private GameObject powerUp;
+
     public PlayerStats player; // Change this so the enemy provider assigns it
 
     public Direction direction;
@@ -27,6 +29,11 @@ public class Enemy : MonoBehaviour
         var player = collision.GetComponent<PlayerMovement>();
         if (player)
         {
+            if(Random.Range(0,3) == 0 && powerUp)
+            {
+                Instantiate(powerUp, transform.position, Quaternion.identity);
+            }
+
             Destroy(this.gameObject);
         }
     }
