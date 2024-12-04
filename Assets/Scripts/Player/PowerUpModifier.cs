@@ -26,38 +26,42 @@ public class PowerUpModifier
    
      public void Start()
     {
-        filePath = Path.Combine(Application.persistentDataPath, "ItemsData.json");
-        json = System.IO.File.ReadAllText(filePath);
-        loadedData = JsonUtility.FromJson<PowerUpsData>(json);
+        dashes = GameManager.Instance.GetLevel(PowerUpLevel.DASHLEVEL);
+        dashTime = GameManager.Instance.GetLevel(PowerUpLevel.DASHTIMELEVEL);
+        timeStop = GameManager.Instance.GetLevel(PowerUpLevel.TIMESTOPLEVEL);
+        radious = GameManager.Instance.GetLevel(PowerUpLevel.COINCOLLECTIONLEVEL);
+        luck = GameManager.Instance.GetLevel(PowerUpLevel.LUCKLEVEL);
     }
 
    public int Dash()
     {
-        dashes = loadedData.dashes;
+
+
+        Debug.Log(dashes);
         return dashes;
     }
 
     public float DashTime()
     {
-        dashTime = loadedData.dashTime;
+
         return dashTime;
     }
 
     public float TimeStop()
     {
-        timeStop = loadedData.timeStop;
+
         return timeStop;
     }
 
     public float CoinCollection()
     {
-        radious = loadedData.radious;
+
         return radious;
     }
     //Numero del uno al 100, siendo 100 asegurar recoger dos monedas, y 0 solo recoger 1
     public int Luck()
     {
-        luck = loadedData.luck;
+
         return luck;
     }
 }

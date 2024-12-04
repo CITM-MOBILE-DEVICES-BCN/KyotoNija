@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -32,13 +32,18 @@ public class PlayerMovement : MonoBehaviour
 
     PowerUpModifier powerUpModifier;
 
-    private void Start()
-    {        
+    private void Awake()
+    {
+
+    }
+
+    void Start()
+    {
         powerUpModifier = new PowerUpModifier();
         powerUpModifier.Start();
         jumpsAmount += powerUpModifier.Dash();
-        timescale += powerUpModifier.TimeStop();
-        dashTimeLimit += powerUpModifier.DashTime();
+        timescale += powerUpModifier.TimeStop() * (-0.02f);
+        dashTimeLimit += powerUpModifier.DashTime() * 0.25f;
         luckMultiplayer += powerUpModifier.Luck();
         coinCollector.radius += powerUpModifier.CoinCollection();
         canClingToWall = true;
