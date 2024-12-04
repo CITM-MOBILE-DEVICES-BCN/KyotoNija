@@ -220,7 +220,7 @@ MonoBehaviour:
   player: {fileID: 0}
   direction: 1
   enemyPrefab: {fileID: 7041778714488997853, guid: 05d0e1ba6c0cc2744b753ceb9ba93431, type: 3}
-  spawnTimer: 2
+  spawnTimer: 5
 --- !u!212 &784998960336025242
 SpriteRenderer:
   m_ObjectHideFlags: 0
