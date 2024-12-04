@@ -11,7 +11,10 @@ public class LevelCreator : MonoBehaviour
 
     private Queue<GameObject> spawnedRooms = new Queue<GameObject>();
     private float nextSpawnHeight;
+
     [SerializeField] private EnemyProvider enemyProvider;
+    [SerializeField] private ObstacleProvider groundObstacleProvider;
+    [SerializeField] private ObstacleProvider airObstacleProvider;
 
     private void Start()
     {
@@ -43,6 +46,11 @@ public class LevelCreator : MonoBehaviour
         // ---Assign enemyProvider----//
         room.enemyProvider = enemyProvider;
 
+        // ---Assign obstacle providers----//
+        room.groundObstacleProvider = groundObstacleProvider;
+        room.airObstacleProvider = airObstacleProvider;
+
+
         nextSpawnHeight = roomHeight;
     }
 
@@ -60,6 +68,8 @@ public class LevelCreator : MonoBehaviour
         var room = newRoom.GetComponent<Spawns>();
         room.player = player.GetComponent<PlayerStats>();
         room.enemyProvider = enemyProvider;
+        room.groundObstacleProvider = groundObstacleProvider;
+        room.airObstacleProvider = airObstacleProvider;
 
         spawnedRooms.Enqueue(newRoom);
 
