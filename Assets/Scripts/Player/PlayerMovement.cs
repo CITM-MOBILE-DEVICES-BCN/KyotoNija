@@ -61,6 +61,11 @@ public class PlayerMovement : MonoBehaviour
             }
             dashTimer = dashTimeLimit;
         }
+
+        if (Input.GetMouseButtonUp(0)){
+            print("button");
+        }
+
         
         if (Input.GetMouseButtonUp(0) && dashTimer > 0 && jumps > 0)
         {
@@ -100,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canClingToWall = false;
         rb.gravityScale = 1;
+        jumps = jumpsAmount;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
