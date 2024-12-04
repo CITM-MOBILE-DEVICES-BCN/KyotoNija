@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
+using MyNavigationSystem;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -28,13 +30,15 @@ public class PlayerStats : MonoBehaviour
             movement?.GetPlayerOffWall();
             iFrames = true;
             renderer.color = Color.green;
-            if(hp  <= 0)
+            if (hp <= 0)
             {
                 print("dead");
+                NavigationManager.Instance.LoadScene("MainMenu_1");
             }
-
-            //rb.velocity *= -1;
-            Invoke("DeactivateIFrames", 1.2f);
+            else
+            {
+                Invoke("DeactivateIFrames", 1.2f);
+            }
         }
     }
 
@@ -53,6 +57,14 @@ public class PlayerStats : MonoBehaviour
         else if (hitInfo == HitWhen.ALWAYS && rb.velocity.magnitude > 1)
         {
             DamageDealt();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("MainCamera"))
+        {
+            NavigationManager.Instance.LoadScene("MainMenu_1");
         }
     }
 
