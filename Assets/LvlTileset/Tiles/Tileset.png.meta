@@ -184,10 +184,10 @@ TextureImporter:
       name: Tileset_4
       rect:
         serializedVersion: 2
-        x: 31
-        y: 144
-        width: 82
-        height: 16
+        x: 79
+        y: 125
+        width: 18
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,6 +197,27 @@ TextureImporter:
       bones: []
       spriteID: 801101501a9f48746aab5b8a6a445109
       internalID: 1674638033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_5
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 125
+        width: 55
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66654266b416ae340aed78062874ec3c
+      internalID: 2098763535
       vertices: []
       indices: 
       edges: []
@@ -217,6 +238,7 @@ TextureImporter:
       Tileset_2: -117847186
       Tileset_3: -1171437373
       Tileset_4: 1674638033
+      Tileset_5: 2098763535
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
