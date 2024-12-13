@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MyNavigationSystem
@@ -10,6 +11,7 @@ namespace MyNavigationSystem
         [Header("References")]
         [SerializeField] private SceneManager sceneManager;
         [SerializeField] private PopUpManager popUpManager;
+        [SerializeField] private PopUpAnimManager popUpAnimManager;
 
         private void Awake()
         {
@@ -46,6 +48,23 @@ namespace MyNavigationSystem
         public void HidePopUp(string popUpID)
         {
             popUpManager.HidePopUp(popUpID);
+        }
+
+        public void StartAnim(List<GameObject> gameObjects, int typeOfAnim)
+        {
+            switch(typeOfAnim)
+            {
+                case 1:
+                    popUpAnimManager.AnimatePopUpScale(gameObjects);
+                    break;
+                case 2:
+                    popUpAnimManager.AnimatePopUpWithRotation(gameObjects);
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

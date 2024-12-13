@@ -16,6 +16,6 @@ public class CoinsGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currencyText.text = "Currency: " + GameManager.Instance.GetCoins() + "$";
+        currencyText.text = "Currency: " + GameManager.Instance.GetCoins() + "+";
     }
 }

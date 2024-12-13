@@ -2,6 +2,7 @@ using MyNavigationSystem;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 
 public class ShopManager : MonoBehaviour
@@ -32,10 +33,21 @@ public class ShopManager : MonoBehaviour
 
     [Header("Button Actions")]
     [SerializeField] private string mainMenuSceneId;
-    [SerializeField] private int stageTimeStop;
+    [SerializeField] private int stageTimeStop;    
+    
+    [Header("ShopIcon")]
+    [SerializeField] private Image shopImage;
+
 
     void Start()
     {
+        List<GameObject> images = new List<GameObject>
+        {
+            shopImage.gameObject
+        };
+
+        NavigationManager.Instance.StartAnim(images, 2);
+
         mainMenuButton.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(mainMenuSceneId));
 
 
@@ -48,7 +60,7 @@ public class ShopManager : MonoBehaviour
 
     private void Update()
     {
-        currencyText.text = "Currency: " + GameManager.Instance.GetCoins() + "$";
+        currencyText.text = "Currency: " + GameManager.Instance.GetCoins() + "+";
 
         dashLevel.text = "Level " + GameManager.Instance.GetLevel(PowerUpLevel.DASHLEVEL);
         dashTimeLevel.text = "Level " + GameManager.Instance.GetLevel(PowerUpLevel.DASHTIMELEVEL);
@@ -56,11 +68,11 @@ public class ShopManager : MonoBehaviour
         coinCollectionLevel.text = "Level " + GameManager.Instance.GetLevel(PowerUpLevel.COINCOLLECTIONLEVEL);
         luckLevel.text = "Level " + GameManager.Instance.GetLevel(PowerUpLevel.LUCKLEVEL);
 
-        dashPrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.DASHPRICE) + "$";
-        dashTimePrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.DASHTIMEPRICE) + "$";
-        timeStopPrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.TIMESTOPPRICE) + "$";
-        coinCollectionPrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.COINCOLLECTIONPRICE) + "$";
-        luckPrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.LUCKPRICE) + "$";
+        dashPrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.DASHPRICE) + "+";
+        dashTimePrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.DASHTIMEPRICE) + "+";
+        timeStopPrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.TIMESTOPPRICE) + "+";
+        coinCollectionPrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.COINCOLLECTIONPRICE) + "+";
+        luckPrice.text = "Upgrade " + GameManager.Instance.GetPrice(PowerUpPrice.LUCKPRICE) + "+";
     }
 
 
