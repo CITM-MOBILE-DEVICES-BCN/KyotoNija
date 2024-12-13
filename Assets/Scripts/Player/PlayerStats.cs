@@ -42,10 +42,13 @@ public class PlayerStats : MonoBehaviour
             if (hp <= 0)
             {
                 print("dead");
+                AudioManager.instance.PlayDeathSound();
+                AudioManager.instance.PlayTitleMusic();
                 NavigationManager.Instance.LoadScene("MainMenu_1");
             }
             else
             {
+                AudioManager.instance.PlayDamageSound();
                 Invoke("DeactivateIFrames", 1.2f);
             }
         }
@@ -73,6 +76,8 @@ public class PlayerStats : MonoBehaviour
     {
         if (collision.CompareTag("MainCamera"))
         {
+            AudioManager.instance.PlayDeathSound();
+            AudioManager.instance.PlayTitleMusic();
             NavigationManager.Instance.LoadScene("MainMenu_1");
         }
     }
