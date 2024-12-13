@@ -52,7 +52,7 @@ MonoBehaviour:
   player: {fileID: 0}
   direction: 0
   crosshair: {fileID: 9166303907291840764}
-  bulletPrefab: {fileID: 1622737910156482297, guid: 4b3defa008a203342abc941bf48c7858, type: 3}
+  bulletPrefab: {fileID: 919581085725275114, guid: 3533d3ee5836b2841a2b8aff776bc55e, type: 3}
   aimSpeed: 0.121
 --- !u!212 &3807461234345434563
 SpriteRenderer:
