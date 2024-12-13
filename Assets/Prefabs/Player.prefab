@@ -368,8 +368,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.074, y: -0.233, z: 0}
-  m_LocalScale: {x: 4.238276, y: 4.238276, z: 4.238276}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 4.54, y: 4.54, z: 4.54}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7420271660228007117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -485,7 +485,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7581177387975821030}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
