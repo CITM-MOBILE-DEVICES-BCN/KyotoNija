@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUp: {fileID: 3722237208355962559, guid: edf42599823f739448fd2027e8009e1a, type: 3}
   player: {fileID: 0}
-  direction: 0
+  direction: 1
   crosshair: {fileID: 4958804991711906071}
   bulletPrefab: {fileID: 0}
   aimSpeed: 0.112
@@ -282,7 +282,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.413, y: 0.583, z: 0}
-  m_LocalScale: {x: 0.23102, y: 0.23102, z: 0.23102}
+  m_LocalScale: {x: 0.06153911, y: 0.06153911, z: 0.06153911}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8553750233900991166}
@@ -328,7 +328,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2135585597343286014, guid: 5aa8b770bc43046bc8d993d0d5b7f4a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59c8cd7ee6d493d4eb70984464c2306f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

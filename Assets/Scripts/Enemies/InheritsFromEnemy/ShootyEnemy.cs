@@ -36,6 +36,7 @@ public class ShootyEnemy : Enemy
             var bullet = Instantiate(bulletPrefab, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             bullet.direction = (crosshair.position - transform.position).normalized;
             shootTimer = SHOOT_TIME;
+            animator.SetTrigger("Attack");
         }
     }
 
