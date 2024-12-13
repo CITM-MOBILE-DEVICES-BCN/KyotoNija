@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class FlyAnimationHandler : MonoBehaviour
+public class SkeletonAnimationHandler : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
@@ -21,15 +20,15 @@ public class FlyAnimationHandler : MonoBehaviour
     void Update()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        if (!stateInfo.IsName("Fly_Attack"))
+        if (!stateInfo.IsName("Skeleton_Attack"))
         {
             animator.ResetTrigger("Attack1");
         }
-        if (!stateInfo.IsName("Fly_Attack2"))
+        if (!stateInfo.IsName("Skeleton_Attack2"))
         {
             animator.ResetTrigger("Attack2");
         }
-        if (!stateInfo.IsName("Fly_Damage"))
+        if (!stateInfo.IsName("Skeleton_Damage"))
         {
             animator.ResetTrigger("TakeDMG");
         }

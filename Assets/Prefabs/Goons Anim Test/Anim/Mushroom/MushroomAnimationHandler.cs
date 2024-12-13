@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class FlyAnimationHandler : MonoBehaviour
+public class MushroomAnimationHandler : MonoBehaviour
 {
+
+
     [SerializeField] private Animator animator;
 
 
@@ -21,15 +22,11 @@ public class FlyAnimationHandler : MonoBehaviour
     void Update()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        if (!stateInfo.IsName("Fly_Attack"))
+        if (!stateInfo.IsName("Mushroom_Attack"))
         {
-            animator.ResetTrigger("Attack1");
+            animator.ResetTrigger("Attack");
         }
-        if (!stateInfo.IsName("Fly_Attack2"))
-        {
-            animator.ResetTrigger("Attack2");
-        }
-        if (!stateInfo.IsName("Fly_Damage"))
+        if (!stateInfo.IsName("Mushroom_Damage"))
         {
             animator.ResetTrigger("TakeDMG");
         }
@@ -37,12 +34,9 @@ public class FlyAnimationHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            animator.SetTrigger("Attack1");
+            animator.SetTrigger("Attack");
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            animator.SetTrigger("Attack2");
-        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             hp--;
@@ -50,7 +44,7 @@ public class FlyAnimationHandler : MonoBehaviour
             animator.SetTrigger("TakeDMG");
         }
 
-        if (hp == 0)
+        if (hp==0)
         {
             hp = 3;
         }
