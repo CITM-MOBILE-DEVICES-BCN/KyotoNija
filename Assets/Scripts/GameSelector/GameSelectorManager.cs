@@ -1,4 +1,5 @@
 using MyNavigationSystem;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,5 +33,15 @@ public class GameSelectorManager : MonoBehaviour
         button3.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(sceneName3));
         button4.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         button4.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(sceneName4));
+
+        List<GameObject> gameObjects = new List<GameObject>
+        {
+            button1.gameObject,
+            button2.gameObject,
+            button3.gameObject,
+            button4.gameObject
+        };
+
+        NavigationManager.Instance.StartAnim(gameObjects, 1);
     }
 }

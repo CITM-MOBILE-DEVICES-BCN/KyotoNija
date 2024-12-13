@@ -19,8 +19,13 @@ namespace MyNavigationSystem
 
         private IEnumerator PlayScaleAnimations(List<GameObject> objects)
         {
+            
             foreach (GameObject obj in objects)
             {
+                if(obj == null)
+                {
+                    break;
+                }
                 obj.transform.localScale = Vector3.zero;
 
                 obj.transform.DOScale(Vector3.one, animationDuration).SetEase(Ease.OutBack);
