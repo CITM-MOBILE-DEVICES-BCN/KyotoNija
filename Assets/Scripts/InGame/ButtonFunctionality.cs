@@ -12,6 +12,7 @@ public class ButtonFunctionality : MonoBehaviour
 
     private void Start()
     {
+        pauseButton.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         pauseButton.onClick.AddListener(() => NavigationManager.Instance.ShowPopUp(pauseId));
     }
 }

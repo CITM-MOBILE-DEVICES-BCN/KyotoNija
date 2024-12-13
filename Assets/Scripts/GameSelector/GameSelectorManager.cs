@@ -16,11 +16,21 @@ public class GameSelectorManager : MonoBehaviour
     [SerializeField] private string sceneName3;
     [SerializeField] private string sceneName4;
 
+    private void Awake()
+    {
+        AudioManager.instance.PlayMenuMusic();
+    }
+
     private void Start()
     {
+        button1.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
+        button1.onClick.AddListener(() => AudioManager.instance.PlayTitleMusic());
         button1.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(sceneName1));
+        button2.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         button2.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(sceneName2));
+        button3.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         button3.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(sceneName3));
+        button4.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         button4.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(sceneName4));
     }
 }

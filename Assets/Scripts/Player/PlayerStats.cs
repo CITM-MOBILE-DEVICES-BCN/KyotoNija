@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerMovement movement;
 
+
     private void Awake()
     {
         renderer = GetComponent<SpriteRenderer>();
@@ -32,11 +33,14 @@ public class PlayerStats : MonoBehaviour
             renderer.color = Color.green;
             if (hp <= 0)
             {
+                AudioManager.instance.PlayDeathSound();
                 print("dead");
+                AudioManager.instance.PlayTitleMusic();
                 NavigationManager.Instance.LoadScene("MainMenu_1");
             }
             else
             {
+                AudioManager.instance.PlayDamageSound();
                 Invoke("DeactivateIFrames", 1.2f);
             }
         }
@@ -64,6 +68,8 @@ public class PlayerStats : MonoBehaviour
     {
         if (collision.CompareTag("MainCamera"))
         {
+            AudioManager.instance.PlayDeathSound();
+            AudioManager.instance.PlayTitleMusic();
             NavigationManager.Instance.LoadScene("MainMenu_1");
         }
     }

@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     float timerTPU;
 
     PowerUpModifier powerUpModifier;
+    
 
     private void Awake()
     {
@@ -82,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (Input.GetMouseButtonUp(0) && dashTimer > 0 && jumps > 0)
         {
+            AudioManager.instance.PlayJumpSound();
             dashDir = Input.mousePosition;
             dashDir.z = Camera.main.GetComponent<Transform>().position.z;
             dashDir = Camera.main.ScreenToWorldPoint(dashDir);
