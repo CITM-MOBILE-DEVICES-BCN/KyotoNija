@@ -10,6 +10,7 @@ public class Coins : MonoBehaviour
    PowerUpModifier powerUpModifier;
 
     public int luckMultiplayer;
+    public ParticleSystem particles;
 
     private void Start()
     {
@@ -30,9 +31,11 @@ public class Coins : MonoBehaviour
             {
                 GameManager.Instance.AddCoins(10);
                 Debug.Log("monedilla");
-            }      
+            }   
             
-            Destroy(gameObject);
+            particles.Play();
+            GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(gameObject,2f);
         }
     }
     
