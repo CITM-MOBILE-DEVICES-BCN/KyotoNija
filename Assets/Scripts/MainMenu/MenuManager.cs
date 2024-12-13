@@ -18,9 +18,14 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        playButton.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
+        playButton.onClick.AddListener(() => AudioManager.instance.PlayInGameMusic());
         playButton.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(inGameSceneName));
+        settingsButton.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         settingsButton.onClick.AddListener(() => NavigationManager.Instance.ShowPopUp(settingsPanelId));
+        shopButton.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         shopButton.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(shopSceneName));
+        exitButton.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         exitButton.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(exitSceneName));
     }
 }

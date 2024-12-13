@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject powerUp;
 
     public PlayerStats player; // Change this so the enemy provider assigns it
+    
 
     public Direction direction;
     void Awake()
@@ -29,7 +30,8 @@ public class Enemy : MonoBehaviour
         var player = collision.GetComponent<PlayerMovement>();
         if (player)
         {
-            if(Random.Range(0,3) == 0 && powerUp)
+            AudioManager.instance.PlayAttackSound();
+            if (Random.Range(0,3) == 0 && powerUp)
             {
                 Instantiate(powerUp, transform.position, Quaternion.identity);
             }

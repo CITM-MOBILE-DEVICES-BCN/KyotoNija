@@ -16,8 +16,11 @@ public class PausePanelManager : MonoBehaviour
 
     private void Start()
     {
+        continueButton.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         continueButton.onClick.AddListener(() => NavigationManager.Instance.HidePopUp(pausePanelId));
+        settingsButton.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         settingsButton.onClick.AddListener(() => NavigationManager.Instance.ShowPopUp(settingsPanelId));
+        mainMenuButton.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         mainMenuButton.onClick.AddListener(() => NavigationManager.Instance.HidePopUp(pausePanelId));
         mainMenuButton.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(menuScene)); 
     }

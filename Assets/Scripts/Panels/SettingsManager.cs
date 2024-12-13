@@ -12,6 +12,7 @@ public class SettingsManager : MonoBehaviour
    
     private void Start()
     {
+        backButton.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         backButton.onClick.AddListener(() => NavigationManager.Instance.HidePopUp(settingsPanelId));       
     }
 }

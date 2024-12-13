@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float force = 5f;
     [SerializeField] public int money = 0;
+    [SerializeField] TrailRenderer trail;
     Vector3 startMousePos;
     Vector3 endMousePos;
     Vector3 dashDir;
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     float timerTPU;
 
     PowerUpModifier powerUpModifier;
+    
 
     private void Awake()
     {
@@ -48,6 +50,11 @@ public class PlayerMovement : MonoBehaviour
         coinCollector.radius += powerUpModifier.CoinCollection();
         canClingToWall = true;
         jumps = jumpsAmount;
+
+        if (trail != null)
+        {
+            trail.emitting = false;
+        }
     }
     void Update()
     {
@@ -82,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (Input.GetMouseButtonUp(0) && dashTimer > 0 && jumps > 0)
         {
+            AudioManager.instance.PlayJumpSound();
             dashDir = Input.mousePosition;
             dashDir.z = Camera.main.GetComponent<Transform>().position.z;
             dashDir = Camera.main.ScreenToWorldPoint(dashDir);
@@ -90,7 +98,15 @@ public class PlayerMovement : MonoBehaviour
             if (dashDir.magnitude > .1f)
             {
                 rb.velocity = Vector2.zero;
+
+                if (trail != null)
+                {
+                    trail.emitting = true;
+                }
+
                 rb.AddForce(dashDir * force, ForceMode2D.Impulse);
+
+                StartCoroutine(DisableTrailAfterDash());
             }
 
             ResumeTimeSpeed();
@@ -113,6 +129,14 @@ public class PlayerMovement : MonoBehaviour
         endMousePos.z = Camera.main.GetComponent<Transform>().position.z;
         endMousePos = Camera.main.ScreenToWorldPoint(endMousePos);
         Debug.Log(jumps);   
+    }
+    IEnumerator DisableTrailAfterDash()
+    {
+        yield return new WaitForSeconds(0.3f); 
+        if (trail != null)
+        {
+            trail.emitting = false;
+        }
     }
     void ResumeTimeSpeed()
     {
