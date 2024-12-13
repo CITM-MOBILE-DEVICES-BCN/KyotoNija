@@ -1,4 +1,5 @@
 using MyNavigationSystem;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,5 +28,17 @@ public class MenuManager : MonoBehaviour
         shopButton.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(shopSceneName));
         exitButton.onClick.AddListener(() => AudioManager.instance.PlayButtonSound());
         exitButton.onClick.AddListener(() => NavigationManager.Instance.LoadSceneAsync(exitSceneName));
+
+
+
+        List<GameObject> buttons = new List<GameObject>
+        {
+            playButton.gameObject,
+            shopButton.gameObject,
+            settingsButton.gameObject,
+            exitButton.gameObject
+        };
+
+        NavigationManager.Instance.StartAnim(buttons, 1);
     }
 }
