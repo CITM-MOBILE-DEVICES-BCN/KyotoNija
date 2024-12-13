@@ -11,6 +11,7 @@ TagManager:
   - CoinCollector
   - TemporalPowerUp
   - Obstacle
+  - BeginWall
   layers:
   - Default
   - TransparentFX

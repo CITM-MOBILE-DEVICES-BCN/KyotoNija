@@ -15,9 +15,10 @@ public class PlayerMovement : MonoBehaviour
     Vector2 direction;
     Ray test;
     Ray velocityRayTest;
-
+    public Animator playeranimator;
     public float timescale = 0.25f;
     float dashTimer;
+    int moveInput;  
     public float dashTimeLimit = 3;
     int jumps = 2;
     public int jumpsAmount = 2;
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     bool isOnWall;
     public int luckMultiplayer;
     public CircleCollider2D coinCollector;
-
+    private bool isOnBegining = false;
     //Temporal Power Up
     int selectorTPU; 
     bool activeTPU = false;
@@ -41,7 +42,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        powerUpModifier = new PowerUpModifier();
+        moveInput = 0;
+       powerUpModifier = new PowerUpModifier();
         powerUpModifier.Start();
         jumpsAmount += powerUpModifier.Dash();
         timescale += powerUpModifier.TimeStop() * (-0.02f);
@@ -58,6 +60,45 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        if(isOnWall && !isOnBegining)
+        {
+            playeranimator.SetBool("Dashing", false);
+            playeranimator.SetBool("Wall", true);
+            playeranimator.SetBool("Idle", false);
+            Debug.Log("ISONWall");
+        }
+       if (!isOnWall && isOnBegining)
+        {
+            playeranimator.SetBool("Dashing", false);
+            playeranimator.SetBool("Wall", false);
+            playeranimator.SetBool("Idle", true);
+        }
+        if (!isOnWall && !isOnBegining) {
+            playeranimator.SetBool("Dashing", true);
+            playeranimator.SetBool("Wall", false);
+            playeranimator.SetBool("Idle", false);
+        } 
+
+        if (rb.velocity.x > 0)
+        {
+            moveInput = 1;
+
+        }
+        else if (rb.velocity.x < 0)
+        {
+            moveInput = -1; // Moving to the left
+        }
+
+
+        if (moveInput > 0)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else if (moveInput < 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+   
         if (Input.GetMouseButtonDown(0) && jumps > 0)
         {
             startMousePos = Input.mousePosition;
@@ -70,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
         {
             SlowTimeSpeed();
             dashTimer -= Time.unscaledDeltaTime;
+          
         }
 
         if (dashTimer < 0)
@@ -142,11 +184,13 @@ public class PlayerMovement : MonoBehaviour
     {
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.02f;
+
     }
     void SlowTimeSpeed()
     {
         Time.timeScale = timescale;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
+     
     }
     public void GetPlayerOffWall()
     {
@@ -162,6 +206,8 @@ public class PlayerMovement : MonoBehaviour
             rb.gravityScale = 0;
             jumps = jumpsAmount;
             isOnWall = true;
+
+          
         }
         if (collision.gameObject.CompareTag("IceWall") && canClingToWall == true)
         {
@@ -169,11 +215,17 @@ public class PlayerMovement : MonoBehaviour
             rb.gravityScale = 0.25f;
             jumps = jumpsAmount;
             isOnWall = true;
+
         }
         if (collision.gameObject.CompareTag("BounceWall") && canClingToWall == true)
         {
             jumps = jumpsAmount;
-        }        
+        }
+        if (collision.gameObject.CompareTag("BeginWall"))
+        {
+            rb.gravityScale = 1;;
+            isOnBegining = true;
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -186,6 +238,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.gravityScale = 1;
             isOnWall = false;
+        }
+        if(collision.gameObject.CompareTag("BeginWall"))
+        {
+            rb.gravityScale = 1;
+            isOnBegining = false;
         }
     }
 
