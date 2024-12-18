@@ -2,28 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class PauseMenuPopUp : MonoBehaviour
+
+namespace ROBOTIN
 {
-    [SerializeField] Button continueButton;
-    [SerializeField] Button exitButton;
-    private void Start()
+    public class PauseMenuPopUp : MonoBehaviour
     {
-        continueButton.onClick.AddListener(OnPauseButtonClicked);
-        exitButton.onClick.AddListener(OnExitButtonClicked);
-    }
+        [SerializeField] Button continueButton;
+        [SerializeField] Button exitButton;
+        private void Start()
+        {
+            continueButton.onClick.AddListener(OnPauseButtonClicked);
+            exitButton.onClick.AddListener(OnExitButtonClicked);
+        }
 
-    private void OnPauseButtonClicked()
-    {
-        
-        GameManager.instance.UnLoadPopUp(gameObject.name);
-        GameManager.instance.currentLevel.timerManager.PauseResumeTimer();
-        //You can add a resume game function here
-    }
+        private void OnPauseButtonClicked()
+        {
 
-    private void OnExitButtonClicked()
-    {
-        Time.timeScale = 1;
-        GameManager.instance.LoadScene("RobotinMeta");
-        GameManager.instance.currentLevel.timerManager.ResetTimer();
+            GameManager.instance.UnLoadPopUp(gameObject.name);
+            GameManager.instance.currentLevel.timerManager.PauseResumeTimer();
+            //You can add a resume game function here
+        }
+
+        private void OnExitButtonClicked()
+        {
+            Time.timeScale = 1;
+            GameManager.instance.LoadScene("RobotinMeta");
+            GameManager.instance.currentLevel.timerManager.ResetTimer();
+        }
     }
 }

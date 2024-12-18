@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoubleJumpOrbController : MonoBehaviour
+namespace ROBOTIN
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class DoubleJumpOrbController : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("Player"))
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            StartCoroutine(Respawn());
-            
-        }
-    }
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                StartCoroutine(Respawn());
 
-    IEnumerator Respawn()
-    {
-        yield return null;
-        gameObject.SetActive(false);
-        yield return new WaitForSeconds(5);
-        gameObject.SetActive(true);
+            }
+        }
+
+        IEnumerator Respawn()
+        {
+            yield return null;
+            gameObject.SetActive(false);
+            yield return new WaitForSeconds(5);
+            gameObject.SetActive(true);
+        }
     }
 }

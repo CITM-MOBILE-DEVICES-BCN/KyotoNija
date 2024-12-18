@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class LobbyScreen : MonoBehaviour
+
+namespace ROBOTIN
 {
-    [SerializeField] Button RobotinButton;
-
-    private void Start()
+    public class LobbyScreen : MonoBehaviour
     {
-        RobotinButton.onClick.AddListener(OnRobotinButtonClicked);
-    }
+        [SerializeField] Button RobotinButton;
 
-    private void OnRobotinButtonClicked()
-    {
-        GameManager.instance.LoadScene("RobotinMeta");
+        private void Start()
+        {
+            RobotinButton.onClick.AddListener(OnRobotinButtonClicked);
+        }
+
+        private void OnRobotinButtonClicked()
+        {
+            GameManager.instance.LoadScene("RobotinMeta");
+        }
     }
 }

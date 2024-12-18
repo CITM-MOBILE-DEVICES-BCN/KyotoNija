@@ -2,35 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class SwipeDetection : MonoBehaviour
+
+namespace ROBOTIN
 {
-    public static SwipeDetection instance;
-    public delegate void Swipe(Vector2 direction);
-    public event Swipe swipePerformed;
-    [SerializeField] private InputAction position, press;
-
-    [SerializeField] private float swipeResistance = 100;
-    private Vector2 initialPos;
-    private Vector2 currentPos => position.ReadValue<Vector2>();
-    private void Awake()
+    public class SwipeDetection : MonoBehaviour
     {
-        position.Enable();
-        press.Enable();
-        press.performed += _ => { initialPos = currentPos; };
-        press.canceled += _ => DetectSwipe();
-        instance = this;
-    }
+        public static SwipeDetection instance;
+        public delegate void Swipe(Vector2 direction);
+        public event Swipe swipePerformed;
+        [SerializeField] private InputAction position, press;
 
-    private void DetectSwipe()
-    {
-        Vector2 delta = currentPos - initialPos;
-        Vector2 direction = Vector2.zero;
-
-        if (Mathf.Abs(delta.x) > swipeResistance)
+        [SerializeField] private float swipeResistance = 100;
+        private Vector2 initialPos;
+        private Vector2 currentPos => position.ReadValue<Vector2>();
+        private void Awake()
         {
-            direction.x = Mathf.Clamp(delta.x, -1, 1);
+            position.Enable();
+            press.Enable();
+            press.performed += _ => { initialPos = currentPos; };
+            press.canceled += _ => DetectSwipe();
+            instance = this;
         }
-        if (direction != Vector2.zero & swipePerformed != null)
-            swipePerformed(direction);
+
+        private void DetectSwipe()
+        {
+            Vector2 delta = currentPos - initialPos;
+            Vector2 direction = Vector2.zero;
+
+            if (Mathf.Abs(delta.x) > swipeResistance)
+            {
+                direction.x = Mathf.Clamp(delta.x, -1, 1);
+            }
+            if (direction != Vector2.zero & swipePerformed != null)
+                swipePerformed(direction);
+        }
     }
 }

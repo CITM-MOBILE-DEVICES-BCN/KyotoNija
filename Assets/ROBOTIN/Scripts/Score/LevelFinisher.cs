@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelFinisher : MonoBehaviour
+namespace ROBOTIN
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    public class LevelFinisher : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("Player"))
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            GameManager.instance.OnLevelFinished();
-            GameManager.instance.LoadScene("RobotinMeta");
-            GameManager.instance.currentLevel.timerManager.ResetTimer();
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                GameManager.instance.OnLevelFinished();
+                GameManager.instance.LoadScene("RobotinMeta");
+                GameManager.instance.currentLevel.timerManager.ResetTimer();
+            }
         }
     }
 }

@@ -2,115 +2,118 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameData
+namespace ROBOTIN
 {
-    private const string LevelScoresKey = "LevelScores";
-    private const string NextLevelKey = "NextLevel";
-    private Dictionary<int, int> levelScores;
-    private int nextLevel;
-
-    public GameData()
+    public class GameData
     {
-        levelScores = new Dictionary<int, int>();
-        Load();
-    }
+        private const string LevelScoresKey = "LevelScores";
+        private const string NextLevelKey = "NextLevel";
+        private Dictionary<int, int> levelScores;
+        private int nextLevel;
 
-    private void Save()
-    {
-        // Serialize levelScores dictionary into a JSON string
-        string serializedScores = JsonUtility.ToJson(new SerializableDictionary<int, int>(levelScores));
-        PlayerPrefs.SetString(LevelScoresKey, serializedScores);
-
-        // Save nextLevel
-        PlayerPrefs.SetInt(NextLevelKey, nextLevel);
-
-        PlayerPrefs.Save();
-    }
-
-    public void Reset()
-    {
-        levelScores.Clear();
-        nextLevel = 1;
-        Save();
-    }
-
-    public void Load()
-    {
-        // Deserialize the LevelScores dictionary
-        string serializedScores = PlayerPrefs.GetString(LevelScoresKey, "{}"); // Default to empty JSON object
-        levelScores = JsonUtility.FromJson<SerializableDictionary<int, int>>(serializedScores).ToDictionary();
-
-        // Load nextLevel with default of 1
-        nextLevel = PlayerPrefs.GetInt(NextLevelKey, 1);
-    }
-
-    public int GetNextLevel()
-    {
-        return nextLevel;
-    }
-
-    public void SetNextLevel(int currentLevel)
-    {
-        if(currentLevel > nextLevel)
+        public GameData()
         {
-            nextLevel = currentLevel;
+            levelScores = new Dictionary<int, int>();
+            Load();
         }
-        Save();
-    }
 
-    public int GetHighScoreFromLevel(int level)
-    {
-        return levelScores.ContainsKey(level) ? levelScores[level] : 0;
-    }
-
-    public void UpdateLevelScore(int level, int newScore)
-    {
-        if (!levelScores.ContainsKey(level) || newScore > levelScores[level])
+        private void Save()
         {
-            levelScores[level] = newScore;
+            // Serialize levelScores dictionary into a JSON string
+            string serializedScores = JsonUtility.ToJson(new SerializableDictionary<int, int>(levelScores));
+            PlayerPrefs.SetString(LevelScoresKey, serializedScores);
+
+            // Save nextLevel
+            PlayerPrefs.SetInt(NextLevelKey, nextLevel);
+
+            PlayerPrefs.Save();
+        }
+
+        public void Reset()
+        {
+            levelScores.Clear();
+            nextLevel = 1;
             Save();
         }
-    }
 
-    public int GetTotalScore()
-    {
-        int total = 0;
-        foreach (var score in levelScores.Values)
+        public void Load()
         {
-            total += score;
+            // Deserialize the LevelScores dictionary
+            string serializedScores = PlayerPrefs.GetString(LevelScoresKey, "{}"); // Default to empty JSON object
+            levelScores = JsonUtility.FromJson<SerializableDictionary<int, int>>(serializedScores).ToDictionary();
+
+            // Load nextLevel with default of 1
+            nextLevel = PlayerPrefs.GetInt(NextLevelKey, 1);
         }
-        return total;
-    }
 
-
-    // Helper class for serialization
-    [System.Serializable]
-    private class SerializableDictionary<TKey, TValue>
-    {
-        public List<TKey> keys = new List<TKey>();
-        public List<TValue> values = new List<TValue>();
-
-        public SerializableDictionary() { }
-
-        public SerializableDictionary(Dictionary<TKey, TValue> dict)
+        public int GetNextLevel()
         {
-            foreach (var kvp in dict)
+            return nextLevel;
+        }
+
+        public void SetNextLevel(int currentLevel)
+        {
+            if (currentLevel > nextLevel)
             {
-                keys.Add(kvp.Key);
-                values.Add(kvp.Value);
+                nextLevel = currentLevel;
+            }
+            Save();
+        }
+
+        public int GetHighScoreFromLevel(int level)
+        {
+            return levelScores.ContainsKey(level) ? levelScores[level] : 0;
+        }
+
+        public void UpdateLevelScore(int level, int newScore)
+        {
+            if (!levelScores.ContainsKey(level) || newScore > levelScores[level])
+            {
+                levelScores[level] = newScore;
+                Save();
             }
         }
 
-        public Dictionary<TKey, TValue> ToDictionary()
+        public int GetTotalScore()
         {
-            var dict = new Dictionary<TKey, TValue>();
-            for (int i = 0; i < keys.Count; i++)
+            int total = 0;
+            foreach (var score in levelScores.Values)
             {
-                dict[keys[i]] = values[i];
+                total += score;
             }
-            return dict;
+            return total;
         }
-    }
 
-    
+
+        // Helper class for serialization
+        [System.Serializable]
+        private class SerializableDictionary<TKey, TValue>
+        {
+            public List<TKey> keys = new List<TKey>();
+            public List<TValue> values = new List<TValue>();
+
+            public SerializableDictionary() { }
+
+            public SerializableDictionary(Dictionary<TKey, TValue> dict)
+            {
+                foreach (var kvp in dict)
+                {
+                    keys.Add(kvp.Key);
+                    values.Add(kvp.Value);
+                }
+            }
+
+            public Dictionary<TKey, TValue> ToDictionary()
+            {
+                var dict = new Dictionary<TKey, TValue>();
+                for (int i = 0; i < keys.Count; i++)
+                {
+                    dict[keys[i]] = values[i];
+                }
+                return dict;
+            }
+        }
+
+
+    }
 }

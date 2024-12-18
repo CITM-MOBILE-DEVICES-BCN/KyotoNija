@@ -7,48 +7,52 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.HDROutputUtils;
 
-public class LoadingScreen : MonoBehaviour
+namespace ROBOTIN
 {
-    public Slider loadingSlider;
-
-    private float progress = 0;
-
-    private int currentStep = 0;
-    private int numSteps = 6000;
-    private float stepIncrement;
-
-    private void Start()
+    public class LoadingScreen : MonoBehaviour
     {
-        StartCoroutine("LoadGame");
-        stepIncrement =  1.0f / (float)numSteps;
-    }
+        public Slider loadingSlider;
 
-    private IEnumerator LoadGame()
-    {
+        private float progress = 0;
 
-        AsyncOperation loadingOperation = SceneManager.LoadSceneAsync("Lobby");
-        loadingOperation.allowSceneActivation = false;
+        private int currentStep = 0;
+        private int numSteps = 6000;
+        private float stepIncrement;
 
-        while (loadingOperation.isDone == false)
+        private void Start()
         {
-            yield return null;
+            StartCoroutine("LoadGame");
+            stepIncrement = 1.0f / (float)numSteps;
+        }
 
-            float t = currentStep  *stepIncrement;
+        private IEnumerator LoadGame()
+        {
 
-            progress = Mathf.Lerp( progress , loadingOperation.progress + 0.1f, t);
-            loadingSlider.value = progress;
+            AsyncOperation loadingOperation = SceneManager.LoadSceneAsync("Lobby");
+            loadingOperation.allowSceneActivation = false;
 
-            currentStep++;
-
-            if (progress >= 0.999f)
+            while (loadingOperation.isDone == false)
             {
+                yield return null;
+
+                float t = currentStep * stepIncrement;
+
+                progress = Mathf.Lerp(progress, loadingOperation.progress + 0.1f, t);
+                loadingSlider.value = progress;
+
+                currentStep++;
+
+                if (progress >= 0.999f)
+                {
 
 
-               loadingOperation.allowSceneActivation = true;
+                    loadingOperation.allowSceneActivation = true;
+
+                }
 
             }
-
         }
+
     }
 
 }

@@ -1,9 +1,12 @@
 ﻿using System;
 
-namespace TimerModule
+namespace ROBOTIN
 {
-	public interface IDateTimeProvider
-	{
-		DateTime UtcNow { get; }
-	}
+    namespace TimerModule
+    {
+        public interface IDateTimeProvider
+        {
+            DateTime UtcNow { get; }
+        }
+    }
 }

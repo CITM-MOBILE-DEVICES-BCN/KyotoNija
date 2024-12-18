@@ -2,64 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class MovingPlatform : MonoBehaviour
+namespace ROBOTIN
 {
-    float speed = 1.5f;
-    Vector3 startPosition;
-    Vector3 endPosition = new Vector3(5, 0, 0);
-    bool movingRight = true;
-    [SerializeField] private GameObject player;
-     
-    void Start()
+    public class MovingPlatform : MonoBehaviour
     {
-        startPosition = transform.position;
-    }
+        float speed = 1.5f;
+        Vector3 startPosition;
+        Vector3 endPosition = new Vector3(5, 0, 0);
+        bool movingRight = true;
+        [SerializeField] private GameObject player;
 
-    void Update()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        Vector3 movement = Vector3.zero;
-
-        if (movingRight)
+        void Start()
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-            if (transform.position.x >= endPosition.x)
+            startPosition = transform.position;
+        }
+
+        void Update()
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            Vector3 movement = Vector3.zero;
+
+            if (movingRight)
             {
-                movingRight = false;
+                transform.position += Vector3.right * speed * Time.deltaTime;
+                if (transform.position.x >= endPosition.x)
+                {
+                    movingRight = false;
+                }
+            }
+            else
+            {
+                transform.position += Vector3.left * speed * Time.deltaTime;
+                if (transform.position.x <= startPosition.x)
+                {
+                    movingRight = true;
+                }
+            }
+
+            transform.position += movement;
+
+            if (player != null)
+            {
+                player.transform.position += movement;
             }
         }
-        else
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
-            if (transform.position.x <= startPosition.x)
+            if (collision.gameObject.CompareTag("Player"))
             {
-                movingRight = true;
+                player = collision.gameObject;
             }
         }
 
-        transform.position += movement;
-
-        if (player != null)
+        private void OnTriggerExit2D(Collider2D collision)
         {
-            player.transform.position += movement;
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            player = collision.gameObject;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            player = null;
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                player = null;
+            }
         }
     }
 }
-
-

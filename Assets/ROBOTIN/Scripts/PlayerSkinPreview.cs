@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerSkinPreview : MonoBehaviour
+namespace ROBOTIN
 {
-    private Image skinPreview;
-
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerSkinPreview : MonoBehaviour
     {
-        skinPreview = GetComponent<Image>();
-    }
+        private Image skinPreview;
 
-    // Update is called once per frame
-    void Update()
-    {
-        skinPreview.sprite = GameManager.instance.playerData.playerSkin;
+        // Start is called before the first frame update
+        void Start()
+        {
+            skinPreview = GetComponent<Image>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            skinPreview.sprite = GameManager.instance.playerData.playerSkin;
+        }
     }
 }

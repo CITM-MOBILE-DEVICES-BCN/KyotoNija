@@ -1,79 +1,82 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TimerModule;
-using TimerSampleScene;
+using ROBOTIN.TimerModule;
+using ROBOTIN.TimerSampleScene;
 using UnityEngine;
 
-public class TimerManager 
+namespace ROBOTIN
 {
-    private Timer timer;
-    private IDateTimeProvider dateTimeProvider;
-    private TimerService timerService;
-
-    private bool isOnPause = false;
-    public TimerManager(float duration)
+    public class TimerManager
     {
-        dateTimeProvider = new DateTimeProvider();
-        timerService = new TimerService(dateTimeProvider);
+        private Timer timer;
+        private IDateTimeProvider dateTimeProvider;
+        private TimerService timerService;
 
-        timer = new Timer(TimeSpan.FromSeconds(0));
-
-        timerService.StartTimer(timer, TimeSpan.FromSeconds(duration));
-    }
-
-    public void UpdateTime()
-    {
-        if (timer != null)
+        private bool isOnPause = false;
+        public TimerManager(float duration)
         {
-            var elapsedTime = timerService.GetTimerElapsedTime(timer);
+            dateTimeProvider = new DateTimeProvider();
+            timerService = new TimerService(dateTimeProvider);
 
-            if (elapsedTime >= timer.Duration)
+            timer = new Timer(TimeSpan.FromSeconds(0));
+
+            timerService.StartTimer(timer, TimeSpan.FromSeconds(duration));
+        }
+
+        public void UpdateTime()
+        {
+            if (timer != null)
             {
-                timerService.StopTimer(timer);
+                var elapsedTime = timerService.GetTimerElapsedTime(timer);
+
+                if (elapsedTime >= timer.Duration)
+                {
+                    timerService.StopTimer(timer);
+                }
+
+                if (timerService.IsTimerDefrosted(timer))
+                {
+                    timerService.DefrostTimer(timer);
+                }
+
+                GameCanvasUI.instance.UpdateTimerView(timer, timerService);
+            }
+        }
+
+        private float GetTimerRemainingTimeNormalized(Timer timer)
+        {
+            return (float)(timerService.GetTimerElapsedTime(timer).TotalSeconds / timer.Duration.TotalSeconds);
+
+        }
+
+        //Called On Level Passed
+        public void ResetTimer()
+        {
+            timerService.ResetTimer(ref timer);
+        }
+
+        public void PauseResumeTimer()
+        {
+            if (!isOnPause)
+            {
+                Time.timeScale = 0;
+                timerService.PauseTimer(timer);
+                isOnPause = true;
+
+            }
+            else
+            {
+                Time.timeScale = 1;
+                timerService.ResumeTimer(timer);
+                isOnPause = false;
             }
 
-            if (timerService.IsTimerDefrosted(timer))
-            {
-                timerService.DefrostTimer(timer);
-            }
-
-            GameCanvasUI.instance.UpdateTimerView(timer, timerService);
         }
-    }
 
-    private float GetTimerRemainingTimeNormalized(Timer timer)
-    {
-        return (float)(timerService.GetTimerElapsedTime(timer).TotalSeconds / timer.Duration.TotalSeconds);
-        
-    }
-
-    //Called On Level Passed
-    public void ResetTimer()
-    {
-        timerService.ResetTimer(ref timer);
-    }
-
-    public void PauseResumeTimer()
-    {
-        if (!isOnPause)
+        public float GetCurrentTime()
         {
-            Time.timeScale = 0;
-            timerService.PauseTimer(timer);
-            isOnPause = true;
-
+            return timerService.GetTimerElapsedTime(timer).Seconds;
         }
-        else
-        {
-            Time.timeScale = 1;
-            timerService.ResumeTimer(timer);
-            isOnPause = false;
-        }
-
-    }
-
-    public float GetCurrentTime()
-    {
-        return timerService.GetTimerElapsedTime(timer).Seconds;
     }
 }

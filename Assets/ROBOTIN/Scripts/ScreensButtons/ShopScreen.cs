@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopScreen : MonoBehaviour
+namespace ROBOTIN
 {
-    [SerializeField]Button backButton;
-    [SerializeField]Button itemExample;
-    private void Start()
+    public class ShopScreen : MonoBehaviour
     {
-        backButton.onClick.AddListener(OnBackButtonClicked);
-        itemExample.onClick.AddListener(OnItemExampleClicked);
+        [SerializeField] Button backButton;
+        [SerializeField] Button itemExample;
+        private void Start()
+        {
+            backButton.onClick.AddListener(OnBackButtonClicked);
+            itemExample.onClick.AddListener(OnItemExampleClicked);
+        }
+
+        private void OnBackButtonClicked()
+        {
+            GameManager.instance.UnLoadScreen(gameObject.name);
+        }
+
+        private void OnItemExampleClicked()
+        {
+            // Do something
+        }
     }
 
-    private void OnBackButtonClicked()
-    {
-        GameManager.instance.UnLoadScreen(gameObject.name);
-    }
-
-    private void OnItemExampleClicked()
-    {
-        // Do something
-    }
 }

@@ -1,9 +1,13 @@
 using System;
-
-namespace TimerModule
+using ROBOTIN.TimerModule;
+namespace ROBOTIN
 {
-	public class DateTimeProvider : IDateTimeProvider
-	{
-		public DateTime UtcNow => DateTime.UtcNow;
-	}
+    namespace TimerModule
+    {
+        public class DateTimeProvider : IDateTimeProvider
+        {
+            public DateTime UtcNow => DateTime.UtcNow;
+        }
+    }
+
 }

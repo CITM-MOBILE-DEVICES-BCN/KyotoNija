@@ -2,52 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+namespace ROBOTIN
 {
-    // Start is called before the first frame update
-
-    float ymin = 1;
-    float ymax = 1000;
-    float y;
-    public GameObject player;
-
-    private void Awake()
+    public class CameraController : MonoBehaviour
     {
-        y = ymin;
-    }
+        // Start is called before the first frame update
 
-    void Start()
-    {
+        float ymin = 1;
+        float ymax = 1000;
+        float y;
+        public GameObject player;
 
-    }
-
-    void SetY()
-    {
-        if(player != null)
+        private void Awake()
         {
-            y = player.transform.position.y; 
-            if (y < ymin)
-            {
-                y = ymin;
-            }
-            if (y > ymax)
-            {
-                y = ymax;
-            }
+            y = ymin;
         }
-       
-        
-    }
 
-    void SetCameraPosition()
-    {
-        SetY();
-        transform.position = new Vector3(transform.position.x, y, transform.position.z);
-    }
+        void Start()
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        SetCameraPosition();
+        }
+
+        void SetY()
+        {
+            if (player != null)
+            {
+                y = player.transform.position.y;
+                if (y < ymin)
+                {
+                    y = ymin;
+                }
+                if (y > ymax)
+                {
+                    y = ymax;
+                }
+            }
+
+
+        }
+
+        void SetCameraPosition()
+        {
+            SetY();
+            transform.position = new Vector3(transform.position.x, y, transform.position.z);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            SetCameraPosition();
+        }
     }
 }

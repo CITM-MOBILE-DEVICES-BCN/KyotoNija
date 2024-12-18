@@ -1,38 +1,42 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TimerModule;
+using ROBOTIN.TimerModule;
 using UnityEngine;
-public class ScoreManager
+
+namespace ROBOTIN
 {
-    private int currentScore;
-    private int highScore;
-
-    // Configurable factors for scoring
-    private int coinMultiplier = 10; 
-    private float timePenaltyFactor = 1f; 
-
-    public ScoreManager()
+    public class ScoreManager
     {
-        currentScore = 0;
-        highScore = 0;
-    }
+        private int currentScore;
+        private int highScore;
 
-    public void AddScore(int points)
-    {
-        currentScore += points;
-        GameCanvasUI.instance.UpdateScoreUI();
-    }
+        // Configurable factors for scoring
+        private int coinMultiplier = 10;
+        private float timePenaltyFactor = 1f;
 
-    public int GetCurrentScore()
-    {
-        return currentScore;
-    }
+        public ScoreManager()
+        {
+            currentScore = 0;
+            highScore = 0;
+        }
 
-    //Call this funcion when you die/finish the level
-    public int CalculateLevelScore(float time, float maxTime)
-    {
-        int finalTimeMultiplayer = (int)(maxTime - time);
-        return currentScore + finalTimeMultiplayer;
+        public void AddScore(int points)
+        {
+            currentScore += points;
+            GameCanvasUI.instance.UpdateScoreUI();
+        }
+
+        public int GetCurrentScore()
+        {
+            return currentScore;
+        }
+
+        //Call this funcion when you die/finish the level
+        public int CalculateLevelScore(float time, float maxTime)
+        {
+            int finalTimeMultiplayer = (int)(maxTime - time);
+            return currentScore + finalTimeMultiplayer;
+        }
     }
 }
