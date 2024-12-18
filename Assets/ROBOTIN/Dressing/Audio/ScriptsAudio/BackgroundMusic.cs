@@ -17,7 +17,6 @@ public class BackgroundMusic : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
         audioSource = GetComponent<AudioSource>();
         AudioManager.instance.StopMusic();
     }

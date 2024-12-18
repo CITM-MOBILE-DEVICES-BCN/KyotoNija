@@ -39,7 +39,7 @@ namespace ROBOTIN
 
         private void OnBackToMenuButtonClicked()
         {
-            GameManager.instance.LoadScene("Lobby");
+            GameManager.instance.LoadScene("GameSelector");
         }
 
         private void OnWorld1ButtonClicked()
