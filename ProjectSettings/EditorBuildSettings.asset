@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InGame.unity
     guid: f2b7ce81a4c552649ae5da20ea6ae865
+  - enabled: 1
+    path: Assets/ROBOTIN/Scenes/RobotinGame.unity
+    guid: 63a719f7f6a2bbe47b3a640ece875139
+  - enabled: 1
+    path: Assets/ROBOTIN/Scenes/RobotinMeta.unity
+    guid: b1ecacad305feb1428b0dcb2dda25f8f
   m_configObjects: {}

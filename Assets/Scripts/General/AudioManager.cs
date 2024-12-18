@@ -79,6 +79,16 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void StopMusic()
+    {
+        titleScreenSource.Stop();
+        menuSource.Stop();
+        inGameSource.Stop();
+        isPlayingTitleMusic = false;
+        isPlayingMenuMusic = false;
+        isPlayingInGameMusic = false;
+    }
+
     // Player FX
     public void PlayJumpSound()
     {

@@ -545,9 +545,9 @@ MonoBehaviour:
   button3: {fileID: 1336363246910067690}
   button4: {fileID: 6452412632688105017}
   sceneName1: MainMenu_1
-  sceneName2: MainMenu_1
-  sceneName3: MainMenu_1
-  sceneName4: MainMenu_1
+  sceneName2: RobotinMeta
+  sceneName3: 
+  sceneName4: 
 --- !u!4 &1918080465
 Transform:
   m_ObjectHideFlags: 0
